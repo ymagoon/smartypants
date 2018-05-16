@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :bookings
   has_many :bundles
-  has_many :items, through: bundle
+  has_many :items, through: :bundle
 
   email = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
