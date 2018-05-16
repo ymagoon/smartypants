@@ -2,19 +2,24 @@ class Booking < ApplicationRecord
   belongs_to :bundle
   belongs_to :user
 
+  @status = ['Pending', 'Approved', 'Denied']
 
-  validates :start_date, :presence: true, :date_validation
-  validates :end_date, :presence: true, :date_validation
-  validates :status, :presence: true
-  validates :price, :presence: true, numerality: true
-  validates :age_group, :presence: true
-  validates :shipping_address, :presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :status, presence: true, inclusion: { in: @status }
+  validates :price, presence: true, numericality: true
+  validates :age_group, presence: true
+  validates :shipping_address, presence: true
 
+  validate :date_validation
+
+  private
   def date_validation
-    if self[:end_date] < self[:start_date]
-      # errors[:end_date] << "Error message"
+    if self.start_date > self.end_date
+      errors[:start_date] << "must be before end date"
       return false
-    elsif self[:start_date] < Date.now
+    elsif DateTime.now > self.start_date
+      errors[:start_date] << "must be in the future"
       return false
     else
       return true

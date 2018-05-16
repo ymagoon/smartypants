@@ -13,7 +13,7 @@ class Bundle < ApplicationRecord
                  '2T',
                  '3T']
 
-  validates :name, presence: true, length: { min: 5 }
+  validates :name, presence: true, length: { minimum: 5 }
   validates :gender, presence: true, inclusion: { in: ['Male', 'Female'] }
   validates :age_group, presence: true, inclusion: { in: @age_groups }
   validates :price_per_day, presence: true, numericality: true
