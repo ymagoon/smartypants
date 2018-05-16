@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_bundle, only: [:create]
 
   def index
-    @bookings = Booking.all.where(user: current_user)
+    @bookings = Booking.where(user: current_user)
   end
 
   def show
@@ -23,17 +23,14 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      render 'bundles/show' # this needs to be the bundle show page
+      render 'bundles/show'
     end
   end
 
-  # def edit
-
-  # end
-
   def update
-    @booking.update(status: <fix me>)
-    redirect_to '/bookings' #fix me
+    # Status needs to be sent via a hidden form
+    @booking.update(status: params[:status])
+    redirect_to bookings_path # this doesn't show up in routes
   end
 
   private
