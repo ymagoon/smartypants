@@ -12,10 +12,13 @@ class ItemsController < ApplicationController
       redirect_to bundle_path(@bundle)
     else
       render :new
+    end
   end
 
   def destroy
+    @item = Item.find(params[:id])
     @item.destroy
+    redirect_to bundle_path(@bundle)
   end
 
   private
