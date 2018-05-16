@@ -8,8 +8,8 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.string :age_group, null: false
       t.string :shipping_address, null: false
       t.text :comment
-      t.references :bundle, foreign_key: true
-      t.references :user, foreign_key: true
+      t.references :bundle, foreign_key: true, index: true
+      t.references :user, foreign_key: true, index: true
 
       t.timestamps
     end

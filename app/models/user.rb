@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :bookings
+  has_many :bundles
+  has_many :items, through: bundle
+
   email = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   validates :first_name, presence: true, length: { minimum: 2 }

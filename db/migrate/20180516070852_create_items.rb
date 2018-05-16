@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :category, null: false
       t.string :color, null: false
       t.string :condition, null: false
-      t.references :bundle, foreign_key: true
+      t.references :bundle, foreign_key: true, index: true
 
       t.timestamps
     end
