@@ -8,7 +8,6 @@ class Booking < ApplicationRecord
   validates :end_date, presence: true
   validates :status, presence: true, inclusion: { in: @status }
   validates :price, presence: true, numericality: true
-  validates :age_group, presence: true
   validates :shipping_address, presence: true
 
   validate :date_validation
