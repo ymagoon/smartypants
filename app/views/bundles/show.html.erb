@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row banner">
+
+  </div>
+  <div class="row bundle">
+    <div class="large-image">
+      <%= image_path @bundle.photo %>
+    </div>
+    <div class="large-description">
+      <h1>@bundle.name</h1>
+      <div class="icons">
+        <p><i class="fas fa-child"></i><%= @bundle.age_group %></p>
+        <% if @bundle.gender == "Male" %>
+          <p><i class="fas fa-mars"></i><%= @bundle.gender %></p>
+        <% else %>
+          <p><i class="fas fa-venus"></i><%= @bundle.gender %></p>
+        <% end %>
+        <p><i class="fas fa-tshirt"></i><%= @bundle.items.length %></p> <!-- i'm not too sure if this is correct -->
+        <p><i class="fas fa-dollar-sign"></i><%= @bundle.price_per_night %> per night</p>
+      </div>
+      <div class="bundle_items">
+        <% @bundle.items.each do |item| %>
+        <ul>
+          <li><%= item.color %> <%= item.name %> (<%= item.category %> - <%= item.condition %>)</li>
+        </ul>
+        <% end %>
+      </div>
+      <div class="booking-form">
+        Put the Booking form here!!
+      </div>
+    </div>
+  </div>
+</div>
