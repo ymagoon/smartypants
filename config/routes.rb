@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'bundles#index', as: :home
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :bundles do
+    member do
+      resources :items, except: [:index, :show]
+
+      resources :bookings, except: [:index]
+    end
+  end
+
+  resources :bookings, only: [:index, :show]
 end
