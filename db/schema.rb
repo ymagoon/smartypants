@@ -10,10 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_16_065830) do
+ActiveRecord::Schema.define(version: 2018_05_16_071047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.string "status", null: false
+    t.float "price", null: false
+    t.string "age_group", null: false
+    t.string "shipping_address", null: false
+    t.text "comment"
+    t.bigint "bundle_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bundle_id"], name: "index_bookings_on_bundle_id"
+    t.index ["end_date"], name: "index_bookings_on_end_date"
+    t.index ["start_date"], name: "index_bookings_on_start_date"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "bundles", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "gender", null: false
+    t.string "age_group", null: false
+    t.float "price_per_day", null: false
+    t.string "photo"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bundles_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "category", null: false
+    t.string "color", null: false
+    t.string "condition", null: false
+    t.bigint "bundle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bundle_id"], name: "index_items_on_bundle_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
@@ -36,4 +77,8 @@ ActiveRecord::Schema.define(version: 2018_05_16_065830) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "bundles"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "bundles", "users"
+  add_foreign_key "items", "bundles"
 end
