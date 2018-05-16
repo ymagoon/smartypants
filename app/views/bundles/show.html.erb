@@ -24,6 +24,9 @@
           <li><%= item.color %> <%= item.name %> (<%= item.category %> - <%= item.condition %>)</li>
         </ul>
         <% end %>
+        <% if current_user == @bundle.user_id %>
+          <%= link_to "Edit this Bundle", item_path(@bundle), class: "btn" %>
+        <% end %>
       </div>
       <div class="booking-form">
         Put the Booking form here!!
