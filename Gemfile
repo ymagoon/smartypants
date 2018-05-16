@@ -19,6 +19,7 @@ gem 'webpacker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'figaro'
+gem 'devise'
 
 # gem 'jquery-rails'
 gem 'awesome_print'
