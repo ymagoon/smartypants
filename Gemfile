@@ -21,6 +21,9 @@ gem 'carrierwave', '~> 1.2'
 gem 'devise'
 gem 'pundit'
 
+gem 'bootstrap-datepicker-rails'
+gem 'jquery-rails'
+
 # gem 'jquery-rails'
 gem 'awesome_print'
 gem 'meta_request'
