@@ -1,18 +1,17 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
-    <img src="images/hangar.jpg" alt="logo">
+    <%= cl_image_tag("bluepacifier.png") %>
   </a>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Orders</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Bundles</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
+  <div class="navbar-right hidden-xs hidden-sm">
+    <p><%= link_to "Orders", bookings_path, class: "navbarlink" %></p>
+    <p><%= link_to "Bundles", bundles_path, class: "navbarlink" %></p>
+    <p><%= link_to "Add a Bundle", new_bundle_path, class: "navbarlink" %></p>
 
     <!-- Profile picture with dropdown list -->
-    <div class="navbar-wagon-item">
+    <div class="navbaritem">
       <div class="dropdown">
         <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
 
