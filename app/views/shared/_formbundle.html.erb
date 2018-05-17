@@ -1,0 +1,8 @@
+<%= simple_form_for @bundle do |f| %>
+<%= f.input :name %>
+<%= f.input :gender, as: :radio_buttons, %>
+<%= f.input :age_group, collection: ['Newborn','0 to 3 months','3 to 6 months','6 to 9 months','9 to 12 months','12 to 18 months','18 to 24 months','2T','3T'] %>
+<%= f.input :price_per_day, label: "Set a price per day" %>
+<%= f.input :photo %>
+<%= f.submit "Create New Bundle", class: "btn" %>
+<% end %>

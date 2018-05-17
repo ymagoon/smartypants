@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="banner">
+    </div>
+    <div class="row">
+      <div class="bundles col-xs-6 col-sm-3">
+        <% @bundles.each do |bundle| %>
+        <%= link_to bundle_path(bundle) do %>
+        <div class="bundle-image">
+          <%= image_path bundle.photo, height: 300, width: 400 %>
+        </div>
+        <div class="bundle-description">
+          <p class="text-bold"><%= bundle.age_group %>~<%= bundle.gender %></p>
+          <h5 class="text-bold"><%= bundle.name %></h5>
+          <p><i class="fas fa-dollar-sign"></i><%= bundle.price_per_night %></p>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

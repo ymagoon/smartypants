@@ -1,7 +1,7 @@
 class BundlesController < ApplicationController
   before_action :set_bundle, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
-
+  
   def index
     @bundles = Bundle.all
   end
@@ -16,7 +16,7 @@ class BundlesController < ApplicationController
   def create
     @bundle = Bundle.new(bundle_params)
     if @bundle.save
-      redirect_to bundle_path(@bundle)
+      redirect_to new_item_path(@bundle)
     else
       render 'new'
     end
