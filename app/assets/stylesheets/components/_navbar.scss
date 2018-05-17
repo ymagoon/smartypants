@@ -23,25 +23,26 @@
 }
 
 /* Right section */
-.navbar-wagon-right {
+.navbar-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 /* Basic navbar item */
-.navbar-wagon-item {
+.navbaritem {
   cursor: pointer;
   padding: 0 20px;
 }
 
 /* Navbar link */
-.navbar-wagon-link {
-  color: #616668;
+.navbarlink {
+  color: $pink;
   font-size: 14px;
+  padding: 10px;
 }
-.navbar-wagon-link:hover {
-  color: #da552f;
+.navbarlink:hover {
+  color: $darkmint;
   text-decoration: none;
 }
 
