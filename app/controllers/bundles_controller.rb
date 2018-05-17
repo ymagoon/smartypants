@@ -18,7 +18,7 @@ class BundlesController < ApplicationController
     @bundle = Bundle.new(bundle_params)
     @bundle.user = current_user
     if @bundle.save
-      redirect_to bundle_path(@bundle)
+      redirect_to new_bundle_item_path(@bundle)
     else
       render 'new'
     end
