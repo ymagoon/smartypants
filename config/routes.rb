@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   root to: 'bundles#index', as: :home
 
   resources :bundles do
-    member do
-      resources :items, except: [:index, :show, :edit, :update]
-
-      resources :bookings, only: [:new, :create]
-    end
+    resources :bookings, only: [:new, :create]
+    resources :items, except: [:index, :show, :edit, :update]
   end
 
-  resources :bookings, only: [:index, :show, :update]
+  resources :bookings, only: [:index, :show] do
+    member do
+      patch 'approve', to: 'bookings#approve', as: :approve
+      patch 'deny', to: 'bookings#deny', as: :deny
+    end
+  end
 end

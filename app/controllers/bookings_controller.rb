@@ -1,9 +1,12 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :update]
-  before_action :set_bundle, only: [:new, :create]
+  before_action :set_booking, only: [:show, :approve, :deny]
+  before_action :set_bundle, only: [:new, :create] #, :approve, :deny
 
   def index
     @bookings = Booking.where(user: current_user)
+    @pending_bookings = @bookings.select { |booking| booking.status == 'Pending' }
+    @active_bookings = @bookings.select { |booking| booking.status == 'Approved' && booking.start_date > DateTime.now }
+    @past_bookings = @bookings.select { |booking| booking.status == 'Approved' && booking.end_date < DateTime.now }
   end
 
   def show
@@ -27,10 +30,14 @@ class BookingsController < ApplicationController
     end
   end
 
-  def update
-    # Status needs to be sent via a hidden form
-    @booking.update(status: params[:status])
-    redirect_to bookings_path # this doesn't show up in routes
+  def approve
+    @booking.update(status: 'Approved')
+    redirect_to bookings_path
+  end
+
+  def deny
+    @booking.update(status: 'Denied')
+    redirect_to bookings_path
   end
 
   private
