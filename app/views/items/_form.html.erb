@@ -1,0 +1,7 @@
+<%= simple_form_for([@bundle, @item]) do |f|%>
+  <%= f.input :name %>
+  <%= f.input :category, collection: Item.categories %>
+  <%= f.input :color, collection: Item.colors %>
+  <%= f.input :condition, collection: Item.conditions %>
+  <%= f.button :submit %>
+<% end %>
