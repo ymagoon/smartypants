@@ -26,7 +26,12 @@
           <%= link_to "Edit this Bundle", item_path(@bundle), class: "btn" %>
         <% end %>
         <%= if current_user == @bundle.user %>
-          <%= link_to "Delete this Bundle", bundles_path, class: "btn" %>
+          <%= link_to bundles_path, method: :delete do %>
+          <div class="large-icon">
+            <i class="fas fa-trash-alt"></i>
+          </div>
+          <% end %>
+        <% end %>
       </div>
       <div class="booking-form">
         <%= render 'shared/formbooking' %>
