@@ -6,9 +6,16 @@
 
   <!-- Right Navigation -->
   <div class="navbar-right hidden-xs hidden-sm">
-    <p><%= link_to "Orders", bookings_path, class: "navbarlink" %></p>
-    <p><%= link_to "Bundles", bundles_path, class: "navbarlink" %></p>
-    <p><%= link_to "Add a Bundle", new_bundle_path, class: "navbarlink" %></p>
+    <% if user_signed_in? %>
+      <p><%= link_to "Orders", bookings_path, class: "navbarlink" %></p>
+    <% end %>
+    <p><%= link_to "All Bundles", bundles_path, class: "navbarlink" %></p>
+
+    <% if user_signed_in? %>
+      <p><%= link_to "Add a Bundle", new_bundle_path, class: "navbarlink" %></p>
+    <% else %>
+      <p><%= link_to "Sign Up", new_user_registration_path, class: "navbarlink" %></p>
+    <% end %>
 
     <!-- Profile picture with dropdown list -->
     <div class="navbaritem">
@@ -16,23 +23,32 @@
         <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Orders</a></li>
-          <li><a href="#">Bundles</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Orders", bookings_path, class: "navbarlink" %></li>
+          <% end %>
+          <li><%= link_to "All Bundles", bundles_path, class: "navbarlink" %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+          <% end %>
         </ul>
       </div>
     </div>
   </div>
+
+
 
   <!-- Dropdown appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Host</a></li>
-        <li><a href="#">Trips</a></li>
-        <li><a href="#">Messagese</a></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Orders", bookings_path, class: "navbarlink" %></li>
+        <% end %>
+        <li><%= link_to "All Bundles", bundles_path, class: "navbarlink" %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+        <% end %>
       </ul>
     </div>
   </div>
