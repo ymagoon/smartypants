@@ -10,7 +10,16 @@
           <%= cl_image_tag bundle.photo, height: 200, width: 300 %>
         </div>
         <div class="bundle-description">
-          <p class="text-bold"><%= bundle.age_group %>~<%= bundle.gender %></p>
+          <div class="icons">
+            <p class="icons-small text-bold">
+            <%= bundle.age_group %> &nbsp&nbsp
+            <% if bundle.gender == "Male" %>
+              <p>  <i class="fas fa-mars"></i></p>
+            <% else %>
+              <p>  <i class="fas fa-venus"></i></p>
+            <% end %>
+            </p>
+          </div>
           <h5 class="text-bold"><%= bundle.name %></h5>
           <p><i class="fas fa-dollar-sign"></i><%= bundle.price_per_day %></p>
         </div>
