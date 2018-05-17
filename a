@@ -1,0 +1,27 @@
+
+[1mFrom:[0m /home/yiti/code/ymagoon/smartypants/app/controllers/bookings_controller.rb @ line 31 BookingsController#create:
+
+    [1;34m15[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m16[0m:   @booking = [1;34;4mBooking[0m.new(booking_params)
+    [1;34m17[0m:   @booking.bundle = @bundle
+    [1;34m18[0m:   @booking.user = current_user
+    [1;34m19[0m: 
+    [1;34m20[0m:   @booking.start_date = convert_dates(params[[33m:start_date[0m])
+    [1;34m21[0m:   @booking.end_date = convert_dates(params[[33m:end_date[0m])
+    [1;34m22[0m:   puts @booking.start_date
+    [1;34m23[0m:   puts @booking.end_date
+    [1;34m24[0m:   @booking.price = @booking.set_price(@bundle.price_per_day,
+    [1;34m25[0m:                                       @booking.start_date,
+    [1;34m26[0m:                                       @booking.end_date)
+    [1;34m27[0m:   puts @booking.price
+    [1;34m28[0m:   puts @booking.valid?
+    [1;34m29[0m:   puts @booking.errors
+    [1;34m30[0m:   binding.pry
+ => [1;34m31[0m:   [32mif[0m @booking.save
+    [1;34m32[0m:     redirect_to booking_path(@booking)
+    [1;34m33[0m:   [32melse[0m
+    [1;34m34[0m:     puts @booking.errors
+    [1;34m35[0m:     render [31m[1;31m'[0m[31mbundles/show[1;31m'[0m[31m[0m
+    [1;34m36[0m:   [32mend[0m
+    [1;34m37[0m: [32mend[0m
+

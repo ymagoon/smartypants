@@ -5,7 +5,7 @@
       <%= image_path @bundle.photo %>
     </div>
     <div class="large-description">
-      <h1>@bundle.name</h1>
+      <h1><%= @bundle.name %></h1>
       <div class="icons">
         <p><i class="fas fa-child"></i><%= @bundle.age_group %></p>
         <% if @bundle.gender == "Male" %>
