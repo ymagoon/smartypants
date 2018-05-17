@@ -21,4 +21,12 @@ class Bundle < ApplicationRecord
   def price_per_day
     self.price_per_day
   end
+
+  def self.gender
+    ['Male', 'Female']
+  end
+
+  def self.age_groups
+    ['Newborn','0 to 3 months','3 to 6 months','6 to 9 months','9 to 12 months','12 to 18 months','18 to 24 months','2T','3T']
+  end
 end
