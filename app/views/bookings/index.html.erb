@@ -1,0 +1,16 @@
+<h1>Your bookings</h1>
+<div class="booking-header">
+  <p>User</p>
+  <p>Email</p>
+  <p>Start Date</p>
+  <p>End Date</p>
+</div>
+<% @bookings.each do |booking| %>
+  <div class="table">
+    <div class="table-row">
+      <p class="user"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
+      <p class="email"><%= booking.user.email %></p>
+      <p class="start_date"><%= booking.start_date %></p>
+      <p class="end_date"><%= booking.end_date %></p>
+    </div>
+  </div>
