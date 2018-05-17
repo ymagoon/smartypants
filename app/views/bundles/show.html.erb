@@ -2,10 +2,10 @@
   <div class="row banner"></div>
   <div class="row bundle">
     <div class="large-image">
-      <%= cl_image_tag(@bundle.photo) %>
+      <%= cl_image_tag @bundle.photo.url(:showpage) %>
     </div>
     <div class="large-description">
-      <h1>@bundle.name</h1>
+      <h1><%= @bundle.name %></h1>
       <div class="icons">
         <p><i class="fas fa-child"></i><%= @bundle.age_group %></p>
         <% if @bundle.gender == "Male" %>
