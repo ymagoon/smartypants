@@ -12,5 +12,8 @@
       <p class="email"><%= booking.user.email %></p>
       <p class="start_date"><%= booking.start_date %></p>
       <p class="end_date"><%= booking.end_date %></p>
+      <%= link_to 'Approve', booking_path(booking), method: 'patch', class: 'booking-approve' %>
+      <%= link_to 'Deny', booking_path(booking), method: 'patch', class: 'booking-deny' %>
     </div>
   </div>
+<% end %>
