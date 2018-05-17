@@ -12,16 +12,12 @@ class BookingsController < ApplicationController
   def show
   end
 
-  # def new
-  #   @booking = Booking.new
-  # end
-
   def create
     @booking = Booking.new(booking_params)
     @booking.bundle = @bundle
     @booking.user = current_user
 
-    @booking.price = @booking.set_price(@bundle.price_per_day, params[:start_date], params[:end_date])
+    @booking.status = 'Pending'
 
     if @booking.save
       redirect_to booking_path(@booking)
@@ -44,7 +40,7 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:bundle_id, :start_date, :end_date, :status,
-                                    :shipping_address, :comment)
+                                             :shipping_address, :comment)
   end
 
   def set_bundle
