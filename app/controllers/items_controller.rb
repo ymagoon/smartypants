@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action: :set_bundle
+  before_action :set_bundle
 
   def new
     @item = Item.new
@@ -24,10 +24,10 @@ class ItemsController < ApplicationController
   private
 
   def set_bundle
-    @bundle = Item.find(params[:bundle_id])
+    @bundle = Bundle.find(params[:bundle_id])
   end
 
   def item_params
-    params.require(:item).permit(:name, :category, :color, :condition)
+    params.require(:item).permit(:bundle_id, :name, :category, :color, :condition)
   end
 end

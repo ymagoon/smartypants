@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :update]
-  before_action :set_bundle, only: [:create]
+  before_action :set_bundle, only: [:new, :create]
 
   def index
     @bookings = Booking.where(user: current_user)
@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :status,
+    params.require(:booking).permit(:bundle_id, :start_date, :end_date, :status,
                                     :shipping_address, :comment)
   end
 

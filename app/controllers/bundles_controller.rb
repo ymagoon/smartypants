@@ -1,12 +1,13 @@
 class BundlesController < ApplicationController
   before_action :set_bundle, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
-  
+
   def index
     @bundles = Bundle.all
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
@@ -15,8 +16,9 @@ class BundlesController < ApplicationController
 
   def create
     @bundle = Bundle.new(bundle_params)
+    @bundle.user = current_user
     if @bundle.save
-      redirect_to new_item_path(@bundle)
+      redirect_to bundle_path(@bundle)
     else
       render 'new'
     end
