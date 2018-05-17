@@ -1,9 +1,9 @@
 <%= simple_form_for @bundle do |f| %>
   <%= f.input :name %>
   <%= f.input :gender, collection: Bundle.gender %>
-  <%= f.input :age_group, collection: Bundle.age_group %>
+  <%= f.input :age_group, collection: Bundle.age_groups %>
   <%= f.input :price_per_day, label: "Set a price per day" %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit "Create New Bundle", class: "btn" %>
+  <%= f.submit "Create New Bundle", class: "btn btn-primary" %>
 <% end %>
