@@ -1,13 +1,13 @@
-<h1> This is the items/new page</h1>
+<div class=“container”>
+ <h1> Add items for <%= @bundle.name %> </h1>
 
-<%= @bundle.name %>
+ <h3>Items in the bundle:</h3>
+ <ul>
+   <% @bundle.items.each do |item| %>
+     <li> <%= item.name %>, <%= item.color %>, <%= item.category %>, <%= item.condition %>, </li>
+     <% end %>
+ </ul>
 
-<h3>Items in the bundle:</h3>
-<ul>
-  <% @bundle.items.each do |item| %>
-    <li> <%= item.name %>, <%= item.color %>, <%= item.category %>, <%= item.condition %>, </li>
-    <% end %>
-</ul>
-
-<h3>Add an item</h3>
-<%= render 'form' %>
+ <h3>Add an item</h3>
+ <%= render 'form' %>
+</div>
