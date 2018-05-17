@@ -1,5 +1,6 @@
 class BundlesController < ApplicationController
   before_action :set_bundle, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:home, :show]
   def index
     @bundles = Bundle.all
   end
