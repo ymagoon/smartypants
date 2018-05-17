@@ -18,9 +18,9 @@ class Bundle < ApplicationRecord
   validates :age_group, presence: true, inclusion: { in: @age_groups }
   validates :price_per_day, presence: true, numericality: true
 
-  def price_per_day
-    self.price_per_day
-  end
+  # def price_per_day
+  #   self.price_per_day
+  # end
 
   def self.gender
     ['Male', 'Female']

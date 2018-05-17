@@ -1,4 +1,4 @@
-<%= simple_form_for(@bundle @booking) do |f| %>
+<%= simple_form_for(@bundle, @booking) do |f| %>
 <%= f.input :start_date, as: :datepicker %>
 <%= f.input :end_date, as: :datepicker %>
 <%= f.input :address, placeholder: "Put your Full Address Here" %>
