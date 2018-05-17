@@ -1,0 +1,35 @@
+.bundles-card {
+  margin: 5px;
+}
+
+.bundle-description {
+  color: $gray;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.icons {
+  display: flex;
+}
+
+.bundle {
+  display: flex;
+}
+
+.large-image {
+  align-self: center;
+  margin: 10px;
+}
+
+.large-description {
+  margin: 10px;
+}
+
+.fas {
+  color: $pink;
+}
+.controls {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-around;
+}

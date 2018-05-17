@@ -2,6 +2,7 @@ class Bundle < ApplicationRecord
   belongs_to :user
   has_many :bookings
   has_many :items
+  mount_uploader :photo, PhotoUploader
 
   @age_groups = ['Newborn',
                  '0 to 3 months',
