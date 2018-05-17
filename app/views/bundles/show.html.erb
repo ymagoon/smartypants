@@ -1,7 +1,5 @@
 <div class="container">
-  <div class="row banner">
-
-  </div>
+  <div class="row banner"></div>
   <div class="row bundle">
     <div class="large-image">
       <%= image_path @bundle.photo %>
@@ -15,8 +13,8 @@
         <% else %>
           <p><i class="fas fa-venus"></i><%= @bundle.gender %></p>
         <% end %>
-        <p><i class="fas fa-tshirt"></i><%= @bundle.items.length %></p> <!-- i'm not too sure if this is correct -->
-        <p><i class="fas fa-dollar-sign"></i><%= @bundle.price_per_night %> per night</p>
+        <p><i class="fas fa-tshirt"></i><%= @bundle.items.length %></p>
+        <p><i class="fas fa-dollar-sign"></i><%= @bundle.price_per_day %> per night</p>
       </div>
       <div class="bundle_items">
         <% @bundle.items.each do |item| %>
@@ -24,12 +22,10 @@
           <li><%= item.color %> <%= item.name %> (<%= item.category %> - <%= item.condition %>)</li>
         </ul>
         <% end %>
-        <% if current_user == @bundle.user_id %>
-          <%= link_to "Edit this Bundle", item_path(@bundle), class: "btn" %>
-        <% end %>
+
       </div>
       <div class="booking-form">
-        Put the Booking form here!!
+        <%= render 'shared/formbooking' %>
       </div>
     </div>
   </div>
