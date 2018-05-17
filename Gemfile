@@ -19,6 +19,9 @@ gem 'webpacker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'devise'
+gem 'bootstrap-datepicker-rails'
+gem 'jquery-rails'
+# datepicker gem
 
 # gem 'jquery-rails'
 gem 'awesome_print'
