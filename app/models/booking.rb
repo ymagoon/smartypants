@@ -12,6 +12,10 @@ class Booking < ApplicationRecord
 
   validate :date_validation
 
+  def set_price(price_per_day, start_date, end_date)
+    @price = (end_date - start_date) * price_per_day
+  end
+
   private
   def date_validation
     if self.start_date > self.end_date
