@@ -1,8 +1,13 @@
-<%= simple_form_for @bundle do |f| %>
-<%= f.input :name %>
-<%= f.input :gender, collection: ['Male', 'Female'] %>
-<%= f.input :age_group, collection: ['Newborn','0 to 3 months','3 to 6 months','6 to 9 months','9 to 12 months','12 to 18 months','18 to 24 months','2T','3T'] %>
-<%= f.input :price_per_day, label: "Set a price per day" %>
-<%= f.input :photo %>
-<%= f.submit "Create New Bundle", class: "btn" %>
-<% end %>
+<div class="container">
+  <div class="row"><h1>Add a New Clothing Bundle</h1></div>
+  <div class="form">
+  <%= simple_form_for @bundle do |f| %>
+    <%= f.input :name, label: false, placeholder: "Make a name for your kiddies clothing bundle", class: "form-control $body-font" %>
+    <%= f.input :gender, collection: ['Male', 'Female'] %>
+    <%= f.input :age_group, collection: ['Newborn','0 to 3 months','3 to 6 months','6 to 9 months','9 to 12 months','12 to 18 months','18 to 24 months','2T','3T'] %>
+    <%= f.input :price_per_day, label: "Set a price per day", class: "form-control $body-font" %>
+    <%= f.input :photo %>
+    <%= f.submit "Create New Bundle", class: "btn-lg brand-primary $body-font" %>
+  <% end %>
+  </div>
+</div>
