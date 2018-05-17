@@ -7,6 +7,7 @@ class BundlesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
@@ -15,6 +16,7 @@ class BundlesController < ApplicationController
 
   def create
     @bundle = Bundle.new(bundle_params)
+    @bundle.user = current_user
     if @bundle.save
       redirect_to bundle_path(@bundle)
     else
