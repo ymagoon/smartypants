@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'items/new'
-  get 'items/edit'
   devise_for :users
   root to: 'bundles#index', as: :home
 
