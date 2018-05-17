@@ -7,7 +7,7 @@
         <% @bundles.each do |bundle| %>
         <%= link_to bundle_path(bundle) do %>
         <div class="bundle-image">
-          <%= image_path bundle.photo, height: 300, width: 400 %>
+          <%= cl_image_tag bundle.photo, height: 300, width: 400 %>
         </div>
         <div class="bundle-description">
           <p class="text-bold"><%= bundle.age_group %>~<%= bundle.gender %></p>
