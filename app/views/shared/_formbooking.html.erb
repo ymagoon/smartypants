@@ -1,0 +1,7 @@
+<%= simple_form_for(@bundle @booking) do |f| %>
+<%= f.input :start_date, as: :datepicker %>
+<%= f.input :end_date, as: :datepicker %>
+<%= f.input :address, placeholder: "Put your Full Address Here" %>
+<%= f.input :comment, as: :text, input_html: {rows: 10, cols: 10}, placeholder: "Add a comment for the Bundle-Owner"  %>
+<%= f.submit "Continue", class: "btn" %>
+<% end %>
