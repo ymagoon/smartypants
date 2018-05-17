@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :bundles
   has_many :items, through: :bundles
+  mount_uploader :photo, PhotoUploader
 
   email = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
