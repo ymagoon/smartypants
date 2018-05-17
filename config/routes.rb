@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     member do
       resources :items, except: [:index, :show]
 
-      resources :bookings, except: [:index]
+      resources :bookings, only: [:new, :create]
     end
   end
 
-  resources :bookings, only: [:index, :show]
+  resources :bookings, only: [:index, :show, :update]
 end
