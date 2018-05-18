@@ -30,11 +30,11 @@ h = Bundle.new(name: "The cutest dress up outfits for your babe" , description: 
 h.remote_photo_url = "http://res.cloudinary.com/cassysan/image/upload/v1526461935/smarty-pants/baby-clothes-baby-shoes-booties-47220_1.jpg"
 h.save!
 
-i = Bundle.new(name: "TOYS TOYS TOYS" , description: "Lions and tigers and bears oh my! just in miniature form, but they aren't legos so step on them as much as you want" , gender: "Male" , age_group: "18 to 24 Months", price_per_day: 5 , user_id: 1)
+i = Bundle.new(name: "TOYS TOYS TOYS" , description: "Lions and tigers and bears oh my! just in miniature form, but they aren't legos so step on them as much as you want" , gender: "Male" , age_group: "18 to 24 months", price_per_day: 5 , user_id: 1)
 i.remote_photo_url = "http://res.cloudinary.com/cassysan/image/upload/v1526461926/smarty-pants/animals-dinosaur-figurines-970206.jpg"
 i.save!
 
-j = Bundle.new(name: "All the goodies" , description: "Babes will love our toybox. you have all the things you could ever want for a growing mind" , gender: "Female" , age_group: "6 to 12 Months" , price_per_day: 3 , user_id: 1)
+j = Bundle.new(name: "All the goodies" , description: "Babes will love our toybox. you have all the things you could ever want for a growing mind" , gender: "Female" , age_group: "6 to 9 months" , price_per_day: 3 , user_id: 1)
 j.remote_photo_url = "http://res.cloudinary.com/cassysan/image/upload/v1526461985/smarty-pants/li-tzuni-507346-unsplash.jpg"
 j.save!
 
