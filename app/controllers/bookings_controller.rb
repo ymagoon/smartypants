@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_bundle, only: [:new, :create] #, :approve, :deny
 
   def index
-    @bookings = Booking.where(user: current_user)
+    @bookings = Booking.all.select { |booking| booking.bundle.user == current_user } #where(user: current_user)
     @pending_bookings = @bookings.select { |booking| booking.status == 'Pending' }
     @active_bookings = @bookings.select { |booking| booking.status == 'Approved' && booking.start_date > DateTime.now }
     @past_bookings = @bookings.select { |booking| booking.status == 'Approved' && booking.end_date < DateTime.now }
