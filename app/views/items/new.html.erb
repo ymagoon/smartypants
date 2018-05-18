@@ -1,13 +1,40 @@
-<div class=“container”>
- <h1> Add items for <%= @bundle.name %> </h1>
+<div class="container">
+  <div class="row banner"></div>
+  <div class="row bundle">
+    <div class="large-image">
+      <%= cl_image_tag @bundle.photo.url(:showpage) %>
+      <% if @bundle.user == current_user %>
+        <div class="controls">
+          <p><%= link_to "Edit Bundle", new_bundle_item_path(@bundle), class: 'btn btn-primary brand-primary' %></p>
+          <p><%= link_to "Delete Bundle", bundle_path(@bundle), method: :delete, class: 'btn btn-primary brand-primary'  %></p>
+          <% end %>
+          <p><%= link_to "Back to All", bundles_path, class: "btn btn-primary brand-primary" %>
+        </div>
+    </div>
+    <div class="large-description">
+      <h1><%= @bundle.name %></h1>
+      <div class="icons">
+        <p><i class="fas fa-child">&nbsp</i><%= @bundle.age_group %></p>
+        <% if @bundle.gender == "Male" %>
+          <p><i class="fas fa-mars">&nbsp</i><%= @bundle.gender %></p>
+        <% else %>
+          <p><i class="fas fa-venus">&nbsp</i><%= @bundle.gender %></p>
+        <% end %>
+        <p><i class="fas fa-tshirt">&nbsp</i><%= @bundle.items.length %></p>
+        <p><i class="fas fa-dollar-sign">&nbsp</i><%= @bundle.price_per_day %> per night</p>
+      </div>
+      <div class="bundle_items">
+        <% @bundle.items.each do |item| %>
+        <ul>
+          <li><%= item.color %> <%= item.name %> (<%= item.category %> - <%= item.condition %>)</li>
+        </ul>
+        <% end %>
 
- <h3>Items in the bundle:</h3>
- <ul>
-   <% @bundle.items.each do |item| %>
-     <li> <%= item.name %>, <%= item.color %>, <%= item.category %>, <%= item.condition %>, </li>
-     <% end %>
- </ul>
-
- <h3>Add an item</h3>
- <%= render 'form' %>
+      </div>
+      <h3> Add an Item</h3>
+      <div class="booking-form">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
 </div>
