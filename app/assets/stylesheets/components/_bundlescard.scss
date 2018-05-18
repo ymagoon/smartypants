@@ -1,28 +1,48 @@
 .bundles-card {
-  padding: 10px;
+  margin: 0 auto;
+  padding-top: 10px;
   border: 1px solid rgb(240, 240, 240);
   border-radius: 5px;
   &:hover {
     text-decoration: none !important;
     transform-origin: center;
     transition: transform .2s cubic-bezier(0,0,.2,1),box-shadow .2s cubic-bezier(0,0,.2,1);
-    box-shadow: 0 5px 10px $pink
+    box-shadow: 0 5px 10px $mint;
     transform: translateY(-10px);
   }
 }
 
+.bundle-image {
+  text-align: center;
+}
+
 .bundle-image img {
   border-radius: 5px;
-  text-align: center;
   &:hover {
   }
 }
 
+// .bundle-content {
+//   position: relative;
+// }
+
 .bundle-description {
+  background-color: $white;
   color: $gray;
   font-weight: 700;
   font-size: 16px;
+  // position: absolute;
+  // z-index: 1;
 }
+
+// .bundle-description-text {
+//   position: absolute;
+//   // z-index: -1;
+//   left: 0px;
+//   top: 0px;
+//   background-color: $white;
+//   color: $gray;
+// }
 
 .icons {
   display: flex;
