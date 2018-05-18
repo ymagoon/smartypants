@@ -5,7 +5,8 @@ class BookingsController < ApplicationController
   def index
     @bookings = Booking.all.select { |booking| booking.bundle.user == current_user }
     @pending_bookings = @bookings.select { |booking| booking.pending_booking? }
-    @active_bookings = @bookings.select { |booking| booking.current_booking? || booking.future_booking? }
+    @active_bookings = @bookings.select { |booking| booking.current_booking? || booking.future_booking? }.sort_by { |booking| booking.start_date }
+    ap @active_bookings
     @past_bookings = @bookings.select { |booking| booking.past_booking? }
   end
 

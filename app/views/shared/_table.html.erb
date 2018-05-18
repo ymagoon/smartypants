@@ -1,6 +1,17 @@
 <h2><%= title %></h2>
+<div class="table-header">
+  <p class="table-bundle-name">Bundle Name</p>
+  <p class="table-bundle-user">User</p>
+  <p class="table-bundle-email">Email</p>
+  <p class="table-bundle-dates">Dates</p>
+  <p class="table-bundle-days">Days</p>
+  <p class="table-bundle-price">Price</p>
+</div>
 <% bookings.each do |booking| %>
   <div class="table-row">
+    <div class="table-item-name">
+      <p><%= booking.bundle.name %></p>
+    </div>
     <div class="table-img">
 
       <%#= image_tag "https://ui-avatars.com/api/?name=#{booking.user.first_name}+#{booking.user.last_name}", class: 'avatar' %>
@@ -23,11 +34,7 @@
       <p><%= booking.start_date.strftime('%a, %b %d %Y') %></p>
       <p><%= booking.end_date.strftime('%a, %b %d %Y') %></p>
     </div>
-<!--
-    <div class="table-end_date">
 
-    </div>
- -->
     <div class="table-days">
       <p><%= booking.days %></p>
     </div>
@@ -50,11 +57,15 @@
 
     <% if booking.current_booking? %>
       <div class="table-status current">
-        <p><i class="fas fa-user-check"></i>Current Booking</p>
+        <p><i class="fas fa-user-check"></i>  Current Booking</p>
       </div>
     <% elsif booking.future_booking? %>
       <div class="table-status future">
-        <p><i class="fas fa-user-check"></i>Future Booking</p>
+        <p><i class="fas fa-user-plus"></i>  Future Booking</p>
+      </div>
+    <% elsif booking.past_booking? %>
+      <div class="table-status past">
+        <p><i class="fas fa-user-clock"></i>  Past Booking</p>
       </div>
     <% end %>
   </div>
