@@ -3,5 +3,6 @@
   <%= f.input :category, collection: Item.categories %>
   <%= f.input :color, collection: Item.colors %>
   <%= f.input :condition, collection: Item.conditions %>
-  <%= f.button :submit %>
+  <%= f.submit "Add Item", class: "btn btn-primary" %>
 <% end %>
+

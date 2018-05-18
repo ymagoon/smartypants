@@ -1,9 +1,8 @@
+
 <% title 'All Bundles' %>
+<%= render 'banner' %>
 
 <div class="container">
-  <div class="row">
-    <div class="banner">
-    </div>
     <div class="row">
       <% @bundles.each do |bundle| %>
       <%= link_to bundle_path(bundle) do %>

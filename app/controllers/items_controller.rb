@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.bundle = @bundle
     if @item.save
-      redirect_to bundle_path(@bundle)
+      redirect_to new_bundle_item_path(@bundle)
     else
       render :new
     end
