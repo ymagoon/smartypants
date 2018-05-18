@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row bundle">
     <div class="large-image">
-      <%= cl_image_tag @bundle.photo.url(:showpage) %>
+      <%= cl_image_tag @bundle.photo.url(:showpage), class: "bundle-photo" %>
       <% if @bundle.user == current_user %>
         <div class="controls">
           <p><%= link_to "Edit Bundle", new_bundle_item_path(@bundle), class: 'btn btn-primary brand-primary' %></p>
