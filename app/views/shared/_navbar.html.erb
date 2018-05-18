@@ -15,6 +15,7 @@
       <p><%= link_to "Add a Bundle", new_bundle_path, class: "navbarlink" %></p>
     <% else %>
       <p><%= link_to "Sign Up", new_user_registration_path, class: "navbarlink" %></p>
+      <p><%= link_to "Login",  new_user_session_path, class: "navbarlink" %></p>
     <% end %>
 
     <!-- Profile picture with dropdown list -->
@@ -25,6 +26,7 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <% if user_signed_in? %>
             <li><%= link_to "Orders", bookings_path, class: "navbarlink" %></li>
+            <li><%= link_to "Dashboard", bookings_path, class: "navbarlink" %></li>
           <% end %>
           <li><%= link_to "All Bundles", bundles_path, class: "navbarlink" %></li>
           <% if user_signed_in? %>
@@ -44,6 +46,7 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <% if user_signed_in? %>
           <li><%= link_to "Orders", bookings_path, class: "navbarlink" %></li>
+          <li><%= link_to "Dashboard", bookings_path, class: "navbarlink" %></li>
         <% end %>
         <li><%= link_to "All Bundles", bundles_path, class: "navbarlink" %></li>
         <% if user_signed_in? %>
