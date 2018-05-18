@@ -20,8 +20,6 @@ class Booking < ApplicationRecord
 
   def price_without_service_fee
     format(self.price - service_fee)
-    # price = (self.price * 0.85).round(2)
-    # format(price)
   end
 
   def days
