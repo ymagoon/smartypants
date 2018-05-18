@@ -13,3 +13,11 @@
 .alert-warning {
   background: $pink;
 }
+
+.alert:empty {
+  display: none;
+}
+
+.notice:empty {
+  display: none;
+}

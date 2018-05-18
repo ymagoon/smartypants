@@ -1,57 +1,13 @@
 <% title 'Your Orders' %>
 
-<h2>All your pending bookings</h2>
-<div class="booking-header">
-  <p>User</p>
-  <p>Email</p>
-  <p>Start Date</p>
-  <p>End Date</p>
-</div>
+<div class="table-container">
+  <%= render partial: 'shared/table', locals: { bookings: @pending_bookings, title: 'All your pending bookings' } %>
+  <% unless @active_bookings.empty? %>
+    <%= render partial: 'shared/table', locals: { bookings: @active_bookings, title: 'All your current and future bookings' } %>
+  <% end %>
 
-<div class="pending-bookings">
-  <% @pending_bookings.each do |booking| %>
-    <div class="table">
-      <div class="table-row">
-        <p class="user"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
-        <p class="email"><%= booking.user.email %></p>
-        <p class="start_date"><%= booking.start_date %></p>
-        <p class="end_date"><%= booking.end_date %></p>
-        <p class="price"><%= booking.price %></p>
-        <%= link_to 'Approve', approve_booking_path(booking), method: :patch, class: 'booking-approve' %>
-        <%= link_to 'Deny', deny_booking_path(booking), method: :patch, class: 'booking-deny' %>
-      </div>
-    </div>
+  <% unless @past_bookings.empty? %>
+    <%= render partial: 'shared/table', locals: { bookings: @past_bookings, title: 'All your past bookings' } %>
   <% end %>
 </div>
 
-<% unless @active_bookings.empty? %>
-  <h2>All your current and future bookings</h2>
-  <div class="pending-bookings">
-    <% @active_bookings.each do |booking| %>
-      <div class="table">
-        <div class="table-row">
-          <p class="user"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
-          <p class="email"><%= booking.user.email %></p>
-          <p class="start_date"><%= booking.start_date %></p>
-          <p class="end_date"><%= booking.end_date %></p>
-        </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
-<% unless @past_bookings.empty? %>
-  <h2>All your past bookings</h2>
-  <div class="pending-bookings">
-    <% @active_bookings.each do |booking| %>
-      <div class="table">
-        <div class="table-row">
-          <p class="user"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
-          <p class="email"><%= booking.user.email %></p>
-          <p class="start_date"><%= booking.start_date %></p>
-          <p class="end_date"><%= booking.end_date %></p>
-        </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>

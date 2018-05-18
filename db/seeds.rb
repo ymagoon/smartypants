@@ -21,3 +21,4 @@ c.save!
 d = Bundle.new(name: "Breezy Beach Bundle", description: "Everything you need for a fun weekend at the beach!", gender: "Female", age_group: "3T", price_per_day: 10, user_id: 1)
 d.remote_photo_url = "http://res.cloudinary.com/cassysan/image/upload/v1526619735/uzhfxaxzu56atxxehpuv.jpg"
 d.save!
+
