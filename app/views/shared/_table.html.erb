@@ -1,0 +1,40 @@
+<h2><%= title %></h2>
+<% bookings.each do |booking| %>
+  <div class="table-row">
+    <div class="img">
+      <%#= image_tag 'path' %>
+    </div>
+
+    <div class="table-user">
+      <p><%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
+    </div>
+
+    <div class="table-email">
+      <p><%= booking.user.email %></p>
+    </div>
+
+    <div class="table-start_date">
+      <p><%= booking.start_date %></p>
+    </div>
+
+    <div class="table-end_date">
+      <p><%= booking.end_date %></p>
+    </div>
+
+    <div class="table-days">
+      <p><%= booking.days %></p>
+    </div>
+
+    <div class="table-total-price">
+      <p><%= booking.price_formatted %></p>
+    </div>
+
+    <div class="table-approve">
+      <%= link_to 'Approve', approve_booking_path(booking), method: :patch, class: 'booking-approve' %>
+    </div>
+
+    <div class="table-deny">
+      <%= link_to 'Deny', deny_booking_path(booking), method: :patch, class: 'booking-deny' %>
+    </div>
+  </div>
+<% end %>

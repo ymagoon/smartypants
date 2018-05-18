@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :bundle
   belongs_to :user
 
-  after_create :set_price
+  after_create :set_price, :set_confirmation
 
   @status = ['Pending', 'Approved', 'Denied']
 
@@ -16,6 +16,10 @@ class Booking < ApplicationRecord
 
   def price_formatted
     format(self.price)
+  end
+
+  def price_without_service_fee
+    format(self.price - service_fee)
   end
 
   def days
@@ -49,6 +53,7 @@ class Booking < ApplicationRecord
     @bundle = self.bundle
     self.price = self.days * @bundle.price_per_day
     self.price += set_service_fee(self.price)
+    set_confirmation
     self.save
   end
 
@@ -62,6 +67,10 @@ class Booking < ApplicationRecord
 
   def format(price)
     sprintf("%.2f", price)
+  end
+
+  def set_confirmation
+    self.confirmation = %w(k d e 5 4 2 0 d 8 3 2 e m b 1).sample(10).join
   end
 end
 

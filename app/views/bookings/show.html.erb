@@ -1,49 +1,76 @@
 <% title 'Confirmed Reservation' %>
 
 <div class="wrapper">
-  <div class="contianer">
+  <div class="booking-page">
     <h1>Your Bundle</h1>
-    <p>Confirmation Code: <%= %w(k d e K 4 2 0 d 8 I L e m b x).sample(12).join %></p>
+    <p>Confirmation Code: <%= @booking.confirmation %></p>
     <hr>
     <div class="booking-info">
       <div>
-        <h4><strong>Start Date</strong></h4>
+        <h5><strong>Start Date</strong></h5>
         <p class="date"><%= @booking.start_date.strftime("%a, %d %b %Y") %></p>
       </div>
       <div>
-        <h4><strong>End Date</strong></h4>
+        <h5><strong>End Date</strong></h5>
         <p class="date"><%= @booking.end_date.strftime("%a, %d %b %Y") %></p>
       </div>
-      <div>
+      <div class="days">
         <p><%= @booking.days %></p>
         <p>Days</p>
       </div>
     </div>
-    <div class="booking-intructions">
-      <div class="payment">
-        <h4><strong>Payment</strong></h4>
-        <p>On the day after the bundle ships, the payout method you supplied will be credited. For details see your Transaction History.</p>
+    <hr>
+    <div class="booking-body">
+      <div class="booking-intructions">
+        <div class="payment">
+          <h4><strong>Payment</strong></h4>
+          <p>On the day after the bundle ships, the payout method you supplied will be credited. For details see your Transaction History.</p>
+        </div>
+        <div class="cancellation-policy">
+          <h4><strong>Cancellation Policy</strong></h4>
+          <p>Strict: 50% refund up to 1 week prior to rental date except fees</p>
+        </div>
+        <div class="customer-support">
+          <h4><strong>Customer Support</strong></h4>
+          <p>If you need assistance with your reservation or for issues with your renter, we are here to help. Contact us at support@smartypants.com and we will get back to you as soon as possible</p>
+        </div>
       </div>
-      <div class="cancellation-policy">
-        <h4><strong>Cancellation Policy</strong></h4>
-        <p>Strict: 50% refund up to 1 week prior to rental date except fees</p>
-      </div>
-      <div class="customer-support">
-        <h4><strong>Customer Support</strong></h4>
-        <p>If you need assistance with your reservation or for issues with your renter, we are here to help. Contact us at support@smartypants.com and we will get back to you as soon as possible</p>
+
+      <div class="booking-payment">
+        <div class="securty-deposit">
+          <h4><strong>Security Deposit</strong></h4>
+          <p>Smartypants will only charge the security deposit amount if an issue is reported by the renter once the bundle is returned.</p>
+        </div>
+        <div class="payment">
+          <h4><strong>Payout</strong></h4>
+          <div class="payout-category">
+            <div class="payout-item head">
+              <p>$<%= @booking.bundle.price_per_day_formatted %> x <%= @booking.days %> days</p>
+            </div>
+            <div class="payout-item">
+              <p class="price">$<%= @booking.price_without_service_fee %></p>
+            </div>
+          </div>
+          <div class="payout-category">
+            <div class="payout-item head">
+              <p>SmartyPants Service Fee</p>
+            </div>
+            <div class="payout-item">
+              <p class="price">($<%= @booking.service_fee_formatted %>)</p>
+            </div>
+          </div>
+          <div class="payout-category">
+            <div class="payout-item head">
+              <p>Total Payout</p>
+            </div>
+            <div class="payout-item">
+              <p class="price">$<%= @booking.price_formatted %></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="booking-payment">
-      <div class="securty-deposit">
-        <h4><strong>Security Deposit</strong></h4>
-        <p>Smartypants will only charge the security deposit amount if an issue is reported by the renter once the bundle is returned.</p>
-      </div>
-      <div class="payment">
-        <h4><strong>Payout</strong></h4>
-        <p> $<%= @booking.bundle.price_per_day %> x <%= @booking.days %> days</p>
-        <p> Smartypants Service Fee ($<%= @booking.price * 0.15 %>) </p>
-        <p> Total Payout $<%= @booking.price + @booking.price * 0.15 %></p>
-      </div>
-    </div>
+
+
   </div>
 </div>
