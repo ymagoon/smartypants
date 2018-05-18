@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :bundles do
     resources :bookings, only: [:new, :create]
     resources :items, except: [:index, :show, :edit, :update]
+
+    collection do
+      get 'mybundles', to: 'bundles#mybundles', as: :mybundles
+    end
   end
 
   resources :bookings, only: [:index, :show] do
