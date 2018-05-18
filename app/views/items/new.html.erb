@@ -1,3 +1,7 @@
+<% title 'New Item' %>
+
+<div class=“container”>
+ <h1> Add items for <%= @bundle.name %> </h1>
 <div class="container">
   <div class="row banner"></div>
   <div class="row bundle">
@@ -29,7 +33,6 @@
           <li><%= item.color %> <%= item.name %> (<%= item.category %> - <%= item.condition %>)</li>
         </ul>
         <% end %>
-
       </div>
       <h3> Add an Item</h3>
       <div class="booking-form">

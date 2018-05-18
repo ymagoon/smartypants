@@ -14,6 +14,10 @@ class Booking < ApplicationRecord
   validate :date_picker_validation
   # validate :check_availability
 
+  def days
+    ((self.end_date - self.start_date).to_f).round
+  end
+
   private
 
   # If the user selects something weird in the booking form
@@ -49,7 +53,7 @@ class Booking < ApplicationRecord
 
   def set_price
     @bundle = self.bundle
-    self.price = ((self.end_date - self.start_date).to_f).round * @bundle.price_per_day
+    self.price = self.days * @bundle.price_per_day
     self.save
   end
 end
