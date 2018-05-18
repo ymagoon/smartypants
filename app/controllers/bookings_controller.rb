@@ -4,9 +4,9 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all.select { |booking| booking.bundle.user == current_user }
-    @pending_bookings = @bookings.select { |booking| booking.status == 'Pending' }
-    @active_bookings = @bookings.select { |booking| booking.status == 'Approved' && booking.start_date > DateTime.now }
-    @past_bookings = @bookings.select { |booking| booking.status == 'Approved' && booking.end_date < DateTime.now }
+    @pending_bookings = @bookings.select { |booking| booking.pending_booking? }
+    @active_bookings = @bookings.select { |booking| booking.current_booking? || booking.future_booking? }
+    @past_bookings = @bookings.select { |booking| booking.past_booking? }
   end
 
   def show

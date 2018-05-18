@@ -2,6 +2,8 @@
 <% bookings.each do |booking| %>
   <div class="table-row">
     <div class="table-img">
+
+      <%#= image_tag "https://ui-avatars.com/api/?name=#{booking.user.first_name}+#{booking.user.last_name}", class: 'avatar' %>
       <% if booking.user.photo.file.nil? %>
         <%= image_tag 'default-avatar-min.jpeg', class: 'avatar' %>
       <% else %>
@@ -35,15 +37,25 @@
     </div>
 
     <div class="table-approve">
-      <% if booking.status == 'Pending' %>
+      <% if booking.pending_booking? %>
         <%= link_to 'Approve', approve_booking_path(booking), method: :patch, class: 'booking-approve btn-approve' %>
       <% end %>
     </div>
 
     <div class="table-deny">
-      <% if booking.status == 'Pending' %>
+      <% if booking.pending_booking? %>
         <%= link_to 'Deny', deny_booking_path(booking), method: :patch, class: 'booking-deny btn-deny' %>
       <% end %>
     </div>
+
+    <% if booking.current_booking? %>
+      <div class="table-status current">
+        <p><i class="fas fa-user-check"></i>Current Booking</p>
+      </div>
+    <% elsif booking.future_booking? %>
+      <div class="table-status future">
+        <p><i class="fas fa-user-check"></i>Future Booking</p>
+      </div>
+    <% end %>
   </div>
 <% end %>

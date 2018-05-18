@@ -25,10 +25,9 @@
   margin-bottom: 5px;
 }
 
-.table-row:hover {
-  background-color: white;
-}
-
+// .table-row:hover {
+//   background-color: white;
+// }
 .table-img {
   width: 40px;
 }
@@ -46,6 +45,25 @@
 }
 .table-total-price {
   width: 100px;
+}
+.current {
+  color: $current-blue;
+  background-color: $current-blue-transparent;
+  padding: 3px 4px;
+  border-radius: 4px;
+  p > .fas {
+    color: $current-blue;
+  }
+}
+
+.future {
+  color: $approve-green;
+  background-color: $approve-green-transparent;
+  padding: 3px 4px;
+  border-radius: 4px;
+  p > .fas {
+    color: $approve-green;
+  }
 }
 
 
