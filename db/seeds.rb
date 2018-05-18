@@ -11,3 +11,6 @@ b = Bundle.new(name: "Adorable Girls Clothes", gender: "Female", age_group: "18 
 b.save
 c = Bundle.new(name: "Toddler Outfits for play", gender: "Male", age_group: "3T", price_per_day: 1, photo: "smarty-pants/baby-clothes-baby-shoes-booties-47220_1.jpg", user_id: 1,  description: "toddler clothes meant for a sandbox day out or a messy play doe session. Most have a few kid grass-stains, but no holes in the knees and well taken care of. " )
 c.save
+d =
+d = Bundle.new(name: "Boys onsies", gender: "Male", age_group: "3 to 6 months", price_per_day: 1.5, photo: "smarty-pants/baby-clothes-baby-shoes-booties-47220_1.jpg", user_id: 1,  description: "there is a full shelf of onsies for that baby boy that keeps throwing up all over his clothes or decides to somehow make a mess of everything you've ever wanted to dress him up in. Handmade in Peru." )
+c.save

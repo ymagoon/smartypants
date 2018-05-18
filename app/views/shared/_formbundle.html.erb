@@ -4,6 +4,7 @@
   <%= f.input :age_group, collection: Bundle.age_groups %>
   <%= f.input :price_per_day, label: "Set a price per day" %>
   <%= f.input :photo %>
+  <%= f.input :description, as: :text, input_html: {rows: 10, cols: 10}, placeholder: "Add a description of the items in your bundle"  %>
   <%= f.input :photo_cache, as: :hidden %>
   <%= f.submit "Create New Bundle", class: "btn btn-primary" %>
 <% end %>
