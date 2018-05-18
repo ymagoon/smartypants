@@ -5,12 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-a = Bundle.new(name: "Cute Baby Toys", gender: "Female", age_group: "2T", price_per_day: 1, photo: "smarty-pants/li-tzuni-507346-unsplash.jpg", user_id: 1,  description: "Large Legos, Stuffed Animals, Rattles and more")
+
+a = Bundle.new(name: "Cute Baby Toys", description: "Lots of fun toys for babies to play with!", gender: "Female", age_group: "2T", price_per_day: 1, user_id: 1)
+a.remote_photo_url = "https://ae01.alicdn.com/kf/HTB1J2v6NXXXXXXtXXXXq6xXFXXXM/caterpillar-Soft-Toy-Doll-Rattle-Kids-Baby-Playmate-Toys-Calm-Owl-Doll-cute-peek-a-boo.jpg"
 a.save!
-b = Bundle.new(name: "Adorable Girls Clothes", gender: "Female", age_group: "18 to 24 months", price_per_day: 1, photo: "smarty-pants/accessories-adorable-baby-325867.jpg", user_id: 1,  description: "Pink everything from dresses to blankets to stuffed toys and socks")
-b.save
-c = Bundle.new(name: "Toddler Outfits for play", gender: "Male", age_group: "3T", price_per_day: 1, photo: "smarty-pants/baby-clothes-baby-shoes-booties-47220_1.jpg", user_id: 1,  description: "toddler clothes meant for a sandbox day out or a messy play doe session. Most have a few kid grass-stains, but no holes in the knees and well taken care of. " )
-c.save
-d =
-d = Bundle.new(name: "Boys onsies", gender: "Male", age_group: "3 to 6 months", price_per_day: 1.5, photo: "smarty-pants/baby-clothes-baby-shoes-booties-47220_1.jpg", user_id: 1,  description: "there is a full shelf of onsies for that baby boy that keeps throwing up all over his clothes or decides to somehow make a mess of everything you've ever wanted to dress him up in. Handmade in Peru." )
-c.save
+
+b = Bundle.new(name: "Adorable Girls Clothes", description: "A bunch of cute girls clothes, great for summer!", gender: "Female", age_group: "18 to 24 months", price_per_day: 1, photo: "smarty-pants/accessories-adorable-baby-325867.jpg", user_id: 1)
+b.remote_photo_url = "https://ae01.alicdn.com/kf/HTB16sXnKFXXXXXrXFXXq6xXFXXXH/New-arrived-spring-Barbie-girls-clothing-set-adorable-twins-set-Girls-sports-outfit-DS5.jpg"
+b.save!
+
+c = Bundle.new(name: "Toddler Outfits for play", description: "Playtime has never been more fun! Perfect outfits for play", gender: "Male", age_group: "3T", price_per_day: 1, photo: "smarty-pants/baby-clothes-baby-shoes-booties-47220_1.jpg", user_id: 1)
+c.remote_photo_url = "https://cdn7.bigcommerce.com/s-etgi42ttv9/product_images/theme_images/Boys_Slider_1_1.jpg?t=1525987576"
+c.save!
+
+d = Bundle.new(name: "Breezy Beach Bundle", description: "Everything you need for a fun weekend at the beach!", gender: "Female", age_group: "3T", price_per_day: 10, user_id: 1)
+d.remote_photo_url = "http://res.cloudinary.com/cassysan/image/upload/v1526619735/uzhfxaxzu56atxxehpuv.jpg"
+d.save!
+
