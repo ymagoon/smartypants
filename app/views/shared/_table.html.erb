@@ -1,8 +1,12 @@
 <h2><%= title %></h2>
 <% bookings.each do |booking| %>
   <div class="table-row">
-    <div class="img">
-      <%#= image_tag 'path' %>
+    <div class="table-img">
+      <% if booking.user.photo.file.nil? %>
+        <%= image_tag 'default-avatar-min.jpeg', class: 'avatar' %>
+      <% else %>
+        <%= cl_image_tag booking.user.photo, height: 35, width: 35, class: 'avatar' %>
+      <% end %>
     </div>
 
     <div class="table-user">
@@ -13,28 +17,33 @@
       <p><%= booking.user.email %></p>
     </div>
 
-    <div class="table-start_date">
-      <p><%= booking.start_date %></p>
+    <div class="table-dates">
+      <p><%= booking.start_date.strftime('%a, %b %d %Y') %></p>
+      <p><%= booking.end_date.strftime('%a, %b %d %Y') %></p>
     </div>
-
+<!--
     <div class="table-end_date">
-      <p><%= booking.end_date %></p>
-    </div>
 
+    </div>
+ -->
     <div class="table-days">
       <p><%= booking.days %></p>
     </div>
 
     <div class="table-total-price">
-      <p><%= booking.price_formatted %></p>
+      <p>$<%= booking.price_formatted %></p>
     </div>
 
     <div class="table-approve">
-      <%= link_to 'Approve', approve_booking_path(booking), method: :patch, class: 'booking-approve' %>
+      <% if booking.status == 'Pending' %>
+        <%= link_to 'Approve', approve_booking_path(booking), method: :patch, class: 'booking-approve btn-approve' %>
+      <% end %>
     </div>
 
     <div class="table-deny">
-      <%= link_to 'Deny', deny_booking_path(booking), method: :patch, class: 'booking-deny' %>
+      <% if booking.status == 'Pending' %>
+        <%= link_to 'Deny', deny_booking_path(booking), method: :patch, class: 'booking-deny btn-deny' %>
+      <% end %>
     </div>
   </div>
 <% end %>

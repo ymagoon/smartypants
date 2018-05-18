@@ -1,13 +1,14 @@
 <% title 'Your Orders' %>
 
-<div class="table-container">
-  <%= render partial: 'shared/table', locals: { bookings: @pending_bookings, title: 'All your pending bookings' } %>
-  <% unless @active_bookings.empty? %>
-    <%= render partial: 'shared/table', locals: { bookings: @active_bookings, title: 'All your current and future bookings' } %>
-  <% end %>
+<div class="wrapper">
+  <div class="table-container">
+    <%= render partial: 'shared/table', locals: { bookings: @pending_bookings, title: 'All your pending bookings' } %>
+    <% unless @active_bookings.empty? %>
+      <%= render partial: 'shared/table', locals: { bookings: @active_bookings, title: 'All your current and future bookings' } %>
+    <% end %>
 
-  <% unless @past_bookings.empty? %>
-    <%= render partial: 'shared/table', locals: { bookings: @past_bookings, title: 'All your past bookings' } %>
-  <% end %>
+    <% unless @past_bookings.empty? %>
+      <%= render partial: 'shared/table', locals: { bookings: @past_bookings, title: 'All your past bookings' } %>
+    <% end %>
+  </div>
 </div>
-

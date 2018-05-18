@@ -1,12 +1,84 @@
+.wrapper {
+  background-color: #F5F7FA;
+}
+
 .table-container {
   max-width: 1000px;
   margin: 0 auto;
+  font-size: 14px;
 
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .table-row {
   display: flex;
+  align-items: center;
+  background-color: white;
   width: 100%;
   justify-content: space-between;
-  border-bottom: 1px solid $light-gray
+  border: 1px solid $darker-gray;
+  border-radius: 3px;
+  box-shadow: 3px 2px 1px rgba(230, 230, 230, 0.4);
+  padding: 20px 10px;
+  margin-bottom: 5px;
+}
+
+.table-row:hover {
+  background-color: white;
+}
+
+.table-img {
+  width: 40px;
+}
+.table-user {
+  width: 175px;
+}
+.table-email {
+  width: 200px;
+}
+.table-dates {
+  width: 150px;
+}
+.table-days {
+  width: 50px;
+}
+.table-total-price {
+  width: 100px;
+}
+
+
+.avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%
+}
+
+.btn-approve {
+  padding:5px 15px;
+  border-radius: 10px;
+  color: white;
+  background-color: $approve-green;
+  opacity: 1;
+}
+
+.btn-approve:hover {
+  color: white;
+  opacity: .8;
+  text-decoration: none;
+}
+
+.btn-deny {
+  padding:5px 15px;
+  border-radius: 10px;
+  color: white;
+  background-color: $deny-red;
+  opacity: 1;
+}
+
+.btn-deny:hover {
+  color: white;
+  opacity: .8;
+  text-decoration: none;
 }
