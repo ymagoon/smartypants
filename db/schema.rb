@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_040921) do
     t.date "start_date", null: false
     t.date "end_date", null: false
     t.string "status", null: false
-    t.float "price", null: false
+    t.float "price", default: 0.0
     t.string "shipping_address", null: false
     t.text "comment"
     t.bigint "bundle_id"
