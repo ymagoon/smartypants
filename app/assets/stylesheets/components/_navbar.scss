@@ -31,6 +31,7 @@
 
 /* Basic navbar item */
 .navbaritem {
+  align-self: flex-start;
   cursor: pointer;
   padding: 0 20px;
 }
@@ -75,4 +76,17 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.btn-add-bundle {
+  padding:5px;
+  border-radius: 10px;
+  color: white;
+  background-color: $pink;
+  opacity: 1;
+}
+
+.btn-add-bundle:hover {
+  color: white;
+  opacity: .8
 }
