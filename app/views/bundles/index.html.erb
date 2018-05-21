@@ -5,7 +5,9 @@
 <div class="container">
     <div class="row">
       <% @bundles.each do |bundle| %>
-      <%= link_to bundle_path(bundle) do %>
+      <% if policy(bundle).show? %>
+        <%= link_to bundle_path(bundle) do %>
+      <% end %>
       <div class="bundles-card col-xs-6 col-md-3">
         <div class="bundle-image">
           <%= cl_image_tag bundle.photo, height: 200, width: 300, class: "bundle-photo" %>

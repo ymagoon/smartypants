@@ -3,7 +3,7 @@ class BundlesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @bundles = Bundle.all
+    @bundles = policy_scope(Bundle)
   end
 
   def show
@@ -11,7 +11,8 @@ class BundlesController < ApplicationController
   end
 
   def new
-    @bundle = Bundle.new
+    @bundle = current_user.bundles.new
+    authorize @bundle
   end
 
   def create
