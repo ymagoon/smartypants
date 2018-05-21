@@ -37,4 +37,27 @@
       </div>
     </div>
   </div>
+
+  <hr>
+
+    <div class="reviews">
+      <%= render 'reviews/form' %>
+      <div class="past_reviews">
+        <% unless @bundle.reviews.nil? %>
+          <% @bundle.reviews.each do |review| %>
+          <div class="review_card">
+            <%= review.title %>
+            <%= review.content %>
+            <% review.stars.times do %>
+            <i class="fas fa-star"></i>
+            <% end %>
+            <p> -  <%= review.user.first_name.capitalize %></p>
+            </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+
 </div>
+
+

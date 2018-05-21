@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :bookings
   has_many :bundles
+  has_many :reviews
   has_many :items, through: :bundles
   mount_uploader :photo, PhotoUploader
 
