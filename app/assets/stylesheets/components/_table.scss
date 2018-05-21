@@ -58,10 +58,8 @@
   padding: 20px 10px;
   margin-bottom: 5px;
     &:hover {
-    text-decoration: none !important;
-    transform-origin: center;
-    transition: transform .2s cubic-bezier(0,0,.2,1),box-shadow .2s cubic-bezier(0,0,.2,1);
-    transform: translateY(-2px);
+    // border: 1px solid $dark-gray;
+    box-shadow: 3px 2px 1px rgba(230, 230, 230, 1);
   }
 }
 
