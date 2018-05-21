@@ -17,7 +17,6 @@ class Bundle < ApplicationRecord
     format(self.price_per_day)
   end
 
-<<<<<<< HEAD
   def number_of_reviews
     @bundle.reviews.length
   end
@@ -28,20 +27,10 @@ class Bundle < ApplicationRecord
     return (sum * 2).round / 2.0
   end
 
-  @star_review = {
-    0.5: <i class="fas fa-star-half"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>,
-    1.0: <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>,
-    1.5: <i class="fas fa-star"></i><i class="fas fa-star-half"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>,
-    2.0: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>,
-    2.5: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><i class="far fa-star"></i><i class="far fa-star"></i>,
-  }
-
-=======
   def number_of_items
     self.items.size
   end
 
->>>>>>> ee5483b8177631f82342b1cc44a4642bb19fb6b5
   validates :name, presence: true, length: { minimum: 5, maximum: 30 }
   validates :gender, presence: true, inclusion: { in: Bundle.gender }
   validates :age_group, presence: true, inclusion: { in: Bundle.age_groups }
