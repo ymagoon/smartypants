@@ -1,8 +1,25 @@
-<h2><%= title %></h2>
+<h2 class="text-center"><%= title %></h2>
+<div class="table-header">
+  <p class="table-bundle-name">Bundle Name</p>
+  <p class="table-bundle-user">User</p>
+  <p class="table-bundle-email">Email</p>
+  <p class="table-bundle-dates">Dates</p>
+  <p class="table-bundle-days">Days</p>
+  <p class="table-bundle-price">Price</p>
+</div>
 <% bookings.each do |booking| %>
   <div class="table-row">
-    <div class="img">
-      <%#= image_tag 'path' %>
+    <div class="table-item-name">
+      <p><%= booking.bundle.name %></p>
+    </div>
+    <div class="table-img">
+
+      <%#= image_tag "https://ui-avatars.com/api/?name=#{booking.user.first_name}+#{booking.user.last_name}", class: 'avatar' %>
+      <% if booking.user.photo.file.nil? %>
+        <%= image_tag 'default-avatar-min.jpeg', class: 'avatar' %>
+      <% else %>
+        <%= cl_image_tag booking.user.photo, height: 35, width: 35, class: 'avatar' %>
+      <% end %>
     </div>
 
     <div class="table-user">
@@ -13,12 +30,9 @@
       <p><%= booking.user.email %></p>
     </div>
 
-    <div class="table-start_date">
-      <p><%= booking.start_date %></p>
-    </div>
-
-    <div class="table-end_date">
-      <p><%= booking.end_date %></p>
+    <div class="table-dates">
+      <p><%= booking.start_date.strftime('%a, %b %d %Y') %></p>
+      <p><%= booking.end_date.strftime('%a, %b %d %Y') %></p>
     </div>
 
     <div class="table-days">
@@ -26,15 +40,33 @@
     </div>
 
     <div class="table-total-price">
-      <p><%= booking.price_formatted %></p>
+      <p>$<%= booking.price_formatted %></p>
     </div>
 
     <div class="table-approve">
-      <%= link_to 'Approve', approve_booking_path(booking), method: :patch, class: 'booking-approve' %>
+      <% if booking.pending_booking? %>
+        <%= link_to 'Approve', approve_booking_path(booking), method: :patch, class: 'booking-approve btn-approve' %>
+      <% end %>
     </div>
 
     <div class="table-deny">
-      <%= link_to 'Deny', deny_booking_path(booking), method: :patch, class: 'booking-deny' %>
+      <% if booking.pending_booking? %>
+        <%= link_to 'Deny', deny_booking_path(booking), method: :patch, class: 'booking-deny btn-deny' %>
+      <% end %>
     </div>
+
+    <% if booking.current_booking? %>
+      <div class="table-status current">
+        <p><i class="fas fa-user-check"></i>  Current Booking</p>
+      </div>
+    <% elsif booking.future_booking? %>
+      <div class="table-status future">
+        <p><i class="fas fa-user-plus"></i>  Future Booking</p>
+      </div>
+    <% elsif booking.past_booking? %>
+      <div class="table-status past">
+        <p><i class="fas fa-user-clock"></i>  Past Booking</p>
+      </div>
+    <% end %>
   </div>
 <% end %>

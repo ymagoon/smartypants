@@ -1,12 +1,8 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all.select { |booking| booking.bundle.user == user }
     end
-  end
-
-  def index?
-    true
   end
 
   def show?

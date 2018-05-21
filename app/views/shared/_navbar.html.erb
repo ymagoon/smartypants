@@ -1,54 +1,64 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <a href="/" class="navbar-wagon-brand">
+  <%= link_to bundles_path, class: 'navbar-wagon-brand' do %>
     <%= cl_image_tag("bluepacifier.png") %>
-  </a>
-
+  <% end %>
   <!-- Right Navigation -->
   <div class="navbar-right hidden-xs hidden-sm">
-    <% if policy(Booking).index? %>
-      <p><%= link_to "Orders", bookings_path, class: "navbarlink" %></p>
+    <p><%= link_to "Home", bundles_path, class: "navbarlink" %></p>
+    <% if policy(Booking).show? %>
+    <% if user_signed_in? %>
+      <p><%= link_to "Bookings", bookings_path, class: "navbarlink" %></p>
     <% end %>
-    <p><%= link_to "All Bundles", bundles_path, class: "navbarlink" %></p>
+    <% end %>
+
 
     <% if user_signed_in? %>
-      <p><%= link_to "Add a Bundle", new_bundle_path, class: "navbarlink" %></p>
+      <% unless current_user.bundles.nil? %>
+        <p><%= link_to "My Bundles", mybundles_bundles_path, class: "navbarlink" %></p>
+      <% end %>
+      <p><%= link_to "Add Bundle", new_bundle_path, class: "navbarlink" %></p>
     <% else %>
-      <p><%= link_to "Sign Up", new_user_registration_path, class: "navbarlink" %></p>
       <p><%= link_to "Login",  new_user_session_path, class: "navbarlink" %></p>
     <% end %>
 
     <!-- Profile picture with dropdown list -->
-    <div class="navbaritem">
-      <div class="dropdown">
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+    <% if user_signed_in? %>
+      <div class="navbaritem">
+        <div class="dropdown">
+          <!-- Load default image if Cloudinary image doesn't exist -->
+          <% if current_user.photo.file.nil? %>
+            <%= image_tag 'default-avatar-min.jpeg', class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown'} %>
+          <% else %>
+            <%= cl_image_tag current_user.photo, height: 35, width: 35, class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' } %>
+          <% end %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><%= link_to "Home", bundles_path, class: "navbarlink" %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Bookings", bookings_path, class: "navbarlink" %></li>
+              <li><%= link_to "Dashboard", bookings_path, class: "navbarlink" %></li>
+            <% end %>
 
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <% if user_signed_in? %>
-            <li><%= link_to "Orders", bookings_path, class: "navbarlink" %></li>
-            <li><%= link_to "Dashboard", bookings_path, class: "navbarlink" %></li>
-          <% end %>
-          <li><%= link_to "All Bundles", bundles_path, class: "navbarlink" %></li>
-          <% if user_signed_in? %>
-            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-          <% end %>
-        </ul>
+            <% if user_signed_in? %>
+              <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
-
-
 
   <!-- Dropdown appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><%= link_to "Home", bundles_path, class: "navbarlink" %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "Orders", bookings_path, class: "navbarlink" %></li>
+          <li><%= link_to "Bookings", bookings_path, class: "navbarlink" %></li>
           <li><%= link_to "Dashboard", bookings_path, class: "navbarlink" %></li>
         <% end %>
-        <li><%= link_to "All Bundles", bundles_path, class: "navbarlink" %></li>
+
         <% if user_signed_in? %>
           <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
         <% end %>

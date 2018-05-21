@@ -7,12 +7,17 @@ class BundlesController < ApplicationController
     @bundles = policy_scope(Bundle)
   end
 
+  def mybundles
+    @bundles = Bundle.where(user: current_user)
+    authorize @bundles
+  end
+
   def show
     @booking = Booking.new
   end
 
   def new
-    @bundle = current_user.bundles.new
+    @bundle = Bundle.new
     authorize @bundle
   end
 

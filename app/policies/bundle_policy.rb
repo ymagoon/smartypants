@@ -9,12 +9,16 @@ class BundlePolicy < ApplicationPolicy
     true
   end
 
+  def mybundles?
+    true
+  end
+
   def show?
     true
   end
 
   def create?
-    false
+    user
   end
 
   def update?
