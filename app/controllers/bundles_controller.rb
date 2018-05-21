@@ -18,6 +18,7 @@ class BundlesController < ApplicationController
   def create
     @bundle = Bundle.new(bundle_params)
     @bundle.user = current_user
+    authorize @bundle
     if @bundle.save
       redirect_to new_bundle_item_path(@bundle)
     else
@@ -45,7 +46,8 @@ class BundlesController < ApplicationController
   private
 
   def set_bundle
-    @bundle = Bundle.find(params[:id])
+    @bundle = policy_scope(Bundle).find(params[:id])
+    authorize @bundle
   end
 
   def bundle_params

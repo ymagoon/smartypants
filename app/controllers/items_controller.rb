@@ -3,11 +3,13 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    authorize @item
   end
 
   def create
     @item = Item.new(item_params)
     @item.bundle = @bundle
+    authorize @item
     if @item.save
       redirect_to new_bundle_item_path(@bundle)
     else
@@ -18,6 +20,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
+    authorize @item
     redirect_to bundle_path(@bundle)
   end
 
