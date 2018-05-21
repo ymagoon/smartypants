@@ -1,34 +1,29 @@
 <div class="container">
     <div class="row">
       <% @bundles.each do |bundle| %>
-
-          <div class="col-xs-6 col-md-3">
-            <%= link_to bundle_path(bundle) do %>
+        <div class="col-xs-6 col-md-3">
+          <%= link_to bundle_path(bundle) do %>
             <div class="bundles-card">
               <div class="bundle-image" style="background-image:url(<%= cl_image_path bundle.photo.url(:bundle_card)%>)">
-
               </div>
-
-
-                <div class="bundle-description">
-                  <h5 class="text-bold"><%= bundle.name %></h5>
-                  <div class="icons">
-                    <p class="text-bold">
-                    <%= bundle.age_group %> &nbsp&nbsp
-                    <% if bundle.gender == "Male" %>
-                      <p>  <i class="fas fa-mars"></i></p>
-                    <% else %>
-                      <p>  <i class="fas fa-venus"></i></p>
-                    <% end %>
-                    </p>
-                  </div>
-                  <p><i class="fas fa-dollar-sign"> </i><%= bundle.price_per_day_formatted %> / day</p>
+              <div class="bundle-content">
+                <div class="bundle-name">
+                  <h5 class="text-bold bundle-title"><%= bundle.name %></h5>
+                  <% if bundle.gender == "Male" %>
+                    <p><i class="fas fa-mars"></i></p>
+                  <% else %>
+                    <p><i class="fas fa-venus"></i></p>
+                  <% end %>
                 </div>
-
+              </div>
+              <div class="bundle-info">
+                <p class="bundle-age"> <%= bundle.age_group %> </p>
+                <p class="bundle-items"><i class="fas fa-tshirt"></i> <%= bundle.number_of_items %></p>
+                <p class="bundle-price"><i class="fas fa-dollar-sign"> </i><%= bundle.price_per_day_formatted %> </p>
+              </div>
             </div>
-            <% end %>
-          </div>
-
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

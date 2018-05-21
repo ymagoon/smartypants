@@ -1,10 +1,13 @@
 .bundles-card {
+  color: $gray;
   background-color: white;
   border: 1px solid rgb(240, 240, 240);
   border-radius: 5px;
   margin-bottom: 15px;
   padding: 10px;
-  height: 335px;
+  height: 315px;
+  font-size: 18px;
+
   &:hover {
     text-decoration: none !important;
     transform-origin: center;
@@ -19,19 +22,34 @@
   background-size: cover;
   width: 100%;
   height: 200px;
-}
 
-.bundle-card img {
-  border-radius: 5px;
-  max-width: 300px;
-  &:hover {
+  img {
+    border-radius: 5px;
   }
 }
 
-.bundle-description {
-  color: $gray;
-  font-weight: 700;
-  font-size: 16px;
+.bundle-content {
+  position: relative;
+}
+
+.bundle-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .bundle-title {
+    margin-right: 10px;
+  }
+}
+
+.bundle-info {
+  display: flex;
+  font-size: 15px;
+
+  .bundle-age, .bundle-items {
+    margin-right: 15px;
+  }
+
 }
 
 .icons {
@@ -55,4 +73,10 @@
   display: flex;
   margin-top: 20px;
   justify-content: space-around;
+}
+
+@media only screen and (max-width: 450px) {
+  .bundles-card {
+    height: 340px;
+  }
 }
