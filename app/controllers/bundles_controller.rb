@@ -3,7 +3,11 @@ class BundlesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @bundles = Bundle.all
+    if params[:query]
+      @bundles = Bundle.search_by_name_and_description(params[:query])
+    else
+      @bundles = Bundle.all
+    end
   end
 
   def mybundles

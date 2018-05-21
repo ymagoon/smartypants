@@ -21,6 +21,13 @@ class Bundle < ApplicationRecord
   validates :age_group, presence: true, inclusion: { in: Bundle.age_groups }
   validates :price_per_day, presence: true, numericality: true
 
+  include PgSearch
+  pg_search_scope :search_by_name_and_description,
+    against: [ :name, :description ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   private
 
   def format(price)

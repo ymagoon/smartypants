@@ -20,6 +20,7 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'devise'
 gem 'pundit'
+gem 'pg_search'
 
 gem 'bootstrap-datepicker-rails'
 gem 'jquery-rails'

@@ -1,3 +1,12 @@
 <% title 'All Bundles' %>
 <%= render 'banner' %>
+<br>
+<div class="container">
+  <%= form_tag bundles_path, method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control" %>
+    <%= submit_tag 'Find Bundles', class: "btn btn-primary" %>
+  <% end %>
+  <%= link_to 'Clear Search', bundles_path, class: "btn btn-info" %>
+</div>
+<br>
 <%= render 'list_bundles' %>
