@@ -16,6 +16,10 @@ class Bundle < ApplicationRecord
     format(self.price_per_day)
   end
 
+  def number_of_items
+    self.items.size
+  end
+
   validates :name, presence: true, length: { minimum: 5, maximum: 30 }
   validates :gender, presence: true, inclusion: { in: Bundle.gender }
   validates :age_group, presence: true, inclusion: { in: Bundle.age_groups }
@@ -24,6 +28,7 @@ class Bundle < ApplicationRecord
   private
 
   def format(price)
+    puts price
     sprintf("%.2f", price)
   end
 end
