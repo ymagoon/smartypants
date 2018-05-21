@@ -8,7 +8,6 @@
       <%= cl_image_tag @bundle.photo.url(:showpage) %>
       <% if @bundle.user == current_user %>
         <div class="controls">
-          <p><%= link_to "Edit Bundle", new_bundle_item_path(@bundle), class: 'btn btn-primary brand-primary' %></p>
           <p><%= link_to "Delete Bundle", bundle_path(@bundle), method: :delete, class: 'btn btn-primary brand-primary'  %></p>
           <% end %>
           <p><%= link_to "Back to All", bundles_path, class: "btn btn-primary brand-primary" %>
