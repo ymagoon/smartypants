@@ -1,7 +1,13 @@
+
+
 <%= simple_form_for [@bundle, @booking] do |f| %>
-  <%= f.input :start_date, input_html: { data: { provide: 'datepicker', 'date-format': 'dd/mm/yyyy' } }, as: :string %>
-  <%= f.input :end_date, input_html: { data: { provide: 'datepicker', 'date-format': 'dd/mm/yyyy' } }, as: :string %>
-  <%= f.input :shipping_address, placeholder: "Put your Full Address Here" %>
-  <%= f.input :comment, as: :text, input_html: {rows: 10, cols: 10}, placeholder: "Add a comment for the Bundle-Owner"  %>
-  <%= f.submit "Continue", class: "btn btn-primary" %>
+
+  <%= f.input :start_date, required: true, input_html: { data: { provide: 'datepicker', 'date-format': 'dd/mm/yyyy' } }, as: :string %>
+  <%= f.input :end_date, required: true, input_html: { data: { provide: 'datepicker', 'date-format': 'dd/mm/yyyy' } }, as: :string %>
+  <%#= f.input :shipping_address, placeholder: "Put your Full Address Here" %>
+  <%= f.input :comment, required: true, as: :text, input_html: {rows: 10, cols: 10}, placeholder: "Add a comment for the Bundle-Owner"  %>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <%= f.submit "Request Bundle", class: "btn btn-primary" %>
+  </div>
 <% end %>

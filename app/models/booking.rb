@@ -9,7 +9,7 @@ class Booking < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :status, presence: true, inclusion: { in: @status }
-  validates :shipping_address, presence: true
+  # validates :shipping_address, presence: true
 
   validate :date_picker_validation, on: :create
   # validate :check_availability

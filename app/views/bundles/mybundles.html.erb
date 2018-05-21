@@ -4,6 +4,8 @@
   <%= render 'list_bundles' %>
   <br>
   <div class="container">
-    <p><%= link_to "Add a Bundle", new_bundle_path %></p>
+    <% if policy(Bundle).create? %>
+      <p><%= link_to "Add a Bundle", new_bundle_path %></p>
+    <% end %>
   </div>
 </div>

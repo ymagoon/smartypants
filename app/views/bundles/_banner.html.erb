@@ -7,25 +7,20 @@
       <%= link_to "Sign Up Today", new_user_registration_path, class: "btn btn-primary" %>
     <% end %>
   </div>
-  <ul class=panes>
-   <li>
-      <%= link_to image_tag "marjorie-bertrand-147634-unsplash_w1400-min.jpg", class: "banner-photos" %>
+  <ul class="panes">
+   <li class="banner-photos" style="background-image: url(<%= asset_path "marjorie-bertrand-147634-unsplash_w1400-min.jpg" %>")>
     </li>
 
-    <li>
-      <%= link_to image_tag "boysunshine_w1400-min.jpg", class: "banner-photos" %>
+    <li class="banner-photos" style="background-image: url(<%= asset_path "boysunshine_w1400-min.jpg" %>")>
     </li>
 
-    <li>
-      <%= link_to image_tag "girlflowerdress_w1400-min.jpg", class: "banner-photos" %>
+    <li class="banner-photos" style="background-image: url(<%= asset_path "girlflowerdress_w1400-min.jpg" %>")>
     </li>
 
-    <li>
-      <%= link_to image_tag "boysuit-min.jpg", class: "banner-photos" %>
+    <li class="banner-photos" style="background-image: url(<%= asset_path "boysuit-min.jpg" %>")>
     </li>
 
-    <li>
-      <%= link_to image_tag "babycostume_w1400-min.jpg", class: "banner-photos" %>
+    <li class="banner-photos" style="background-image: url(<%= asset_path "babycostume_w1400-min.jpg" %>")>
     </li>
   </ul>
 </div>
