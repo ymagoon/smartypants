@@ -3,8 +3,14 @@ class BundlesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   skip_after_action :verify_authorized
 
+
   def index
-    @bundles = policy_scope(Bundle)
+    @query = params[:name] || params[:age_group] ? true : false
+    if @query
+      @bundles = Bundle.where("name ilike ? AND age_group like ?", "%#{params[:name]}%", "%#{params[:age_group]}%")
+    else
+      @bundles = policy_scope(Bundle)
+    end
   end
 
   def mybundles
