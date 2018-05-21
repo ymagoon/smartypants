@@ -10,7 +10,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
 
     version :showpage do
-    cloudinary_transformation quality: :auto, crop: :scale, width: 600
+      cloudinary_transformation quality: :auto, crop: :scale, width: 600, height: 400
     end
 
     version :avatar_small do

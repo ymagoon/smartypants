@@ -52,17 +52,16 @@
 
 }
 
-.icons {
+.bundle-show-content {
+  margin-top: 10px;
   display: flex;
+  justify-content: space-between;
 }
 
-.bundle {
-  display: flex;
-}
-
-.large-image {
-  align-self: center;
-  margin: 10px;
+.bundle-show-info {
+  h1 {
+    margin-top: 0;
+  }
 }
 
 .fas {
