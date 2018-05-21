@@ -1,16 +1,16 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :approve, :deny]
-  before_action :set_bundle, only: [:new, :create]
+  after_action :verify_authorized, except: [:index, :show], unless: :skip_pundit?
 
   def index
-    @bookings = Booking.all.select { |booking| booking.bundle.user == current_user }
+    @bookings = policy_scope(Booking)
     @pending_bookings = @bookings.select { |booking| booking.pending_booking? }
     @active_bookings = @bookings.select { |booking| booking.current_booking? || booking.future_booking? }.sort_by { |booking| booking.start_date }
-    @active_bookings
     @past_bookings = @bookings.select { |booking| booking.past_booking? }
   end
 
   def show
+    authorize @booking
   end
 
   def create
@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     @booking.status = 'Pending'
+    authorize @booking
 
     if @booking.save
       redirect_to booking_path(@booking)
@@ -28,11 +29,13 @@ class BookingsController < ApplicationController
   end
 
   def approve
+    authorize @booking
     @booking.update(status: 'Approved')
     redirect_to bookings_path
   end
 
   def deny
+    authorize @booking
     @booking.update(status: 'Denied')
     redirect_to bookings_path
   end
@@ -50,6 +53,11 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
+  end
+
+  def skip_pundit?
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 end
 
