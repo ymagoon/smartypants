@@ -1,6 +1,7 @@
 class BundlesController < ApplicationController
   before_action :set_bundle, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_after_action :verify_authorized
 
 
   def index
@@ -8,25 +9,29 @@ class BundlesController < ApplicationController
     if @query
       @bundles = Bundle.where("name ilike ? AND age_group like ?", "%#{params[:name]}%", "%#{params[:age_group]}%")
     else
-      @bundles = Bundle.all
+      @bundles = policy_scope(Bundle)
     end
   end
 
   def mybundles
     @bundles = Bundle.where(user: current_user)
+    authorize @bundles
   end
 
   def show
     @booking = Booking.new
+    @review = Review.new
   end
 
   def new
     @bundle = Bundle.new
+    authorize @bundle
   end
 
   def create
     @bundle = Bundle.new(bundle_params)
     @bundle.user = current_user
+    authorize @bundle
     if @bundle.save
       redirect_to new_bundle_item_path(@bundle)
     else
@@ -54,7 +59,8 @@ class BundlesController < ApplicationController
   private
 
   def set_bundle
-    @bundle = Bundle.find(params[:id])
+    @bundle = policy_scope(Bundle).find(params[:id])
+    authorize @bundle
   end
 
   def bundle_params

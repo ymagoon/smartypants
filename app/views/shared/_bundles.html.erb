@@ -3,13 +3,16 @@
     <div class="large-image">
       <%= cl_image_tag @bundle.photo.url(:showpage), class: "bundle-photo" %>
       <p><%= @bundle.description %></p>
-      <% if @bundle.user == current_user %>
+        <% if policy(@bundle).update? %>
         <div class="controls">
           <p><%= link_to "Edit Bundle", new_bundle_item_path(@bundle), class: 'btn btn-primary brand-primary' %></p>
+        <% end %>
+        <% if policy(@bundle).destroy? %>
           <p><%= link_to "Delete Bundle", bundle_path(@bundle), method: :delete, class: 'btn btn-primary brand-primary'  %></p>
-          <% end %>
+        <% end %>
+        <% if policy(Bundle).index? %>
           <p><%= link_to "Back to All", bundles_path, class: "btn btn-primary brand-primary" %>
-
+        <% end %>
         </div>
     </div>
     <div class="large-description">
@@ -37,4 +40,27 @@
       </div>
     </div>
   </div>
+
+  <hr>
+
+    <div class="reviews">
+      <%= render 'reviews/form' %>
+      <div class="past_reviews">
+        <% unless @bundle.reviews.nil? %>
+          <% @bundle.reviews.each do |review| %>
+          <div class="review_card">
+            <%= review.title %>
+            <%= review.content %>
+            <% review.stars.times do %>
+            <i class="fas fa-star"></i>
+            <% end %>
+            <p> -  <%= review.user.first_name.capitalize %></p>
+            </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+
 </div>
+
+

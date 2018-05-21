@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :bundle
+  has_one :user, through: :bundle
 
   def self.categories
     %w(Onsie Dress Footwear Socks Shorts Pants Top Bib Playsuit).sort

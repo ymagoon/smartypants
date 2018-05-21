@@ -5,12 +5,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
    process convert: 'jpg'
 
-    version :bundlecard do
+    version :bundle_card do
       process resize_to_fill: [300,200]
     end
 
     version :showpage do
-    cloudinary_transformation quality: :auto, crop: :scale, width: 600
+      cloudinary_transformation quality: :auto, crop: :scale, width: 600, height: 400
     end
 
     version :avatar_small do
