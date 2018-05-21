@@ -24,6 +24,7 @@ class Bundle < ApplicationRecord
   private
 
   def format(price)
+    puts price
     sprintf("%.2f", price)
   end
 end
