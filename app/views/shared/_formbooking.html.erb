@@ -1,6 +1,7 @@
 
 
 <%= simple_form_for [@bundle, @booking] do |f| %>
+
   <%= f.input :start_date, required: true, input_html: { data: { provide: 'datepicker', 'date-format': 'dd/mm/yyyy' } }, as: :string %>
   <%= f.input :end_date, required: true, input_html: { data: { provide: 'datepicker', 'date-format': 'dd/mm/yyyy' } }, as: :string %>
   <%#= f.input :shipping_address, placeholder: "Put your Full Address Here" %>
@@ -9,5 +10,4 @@
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     <%= f.submit "Request Bundle", class: "btn btn-primary" %>
   </div>
-
 <% end %>

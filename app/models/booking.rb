@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :bundle
   belongs_to :user
 
-  after_create :set_price, :set_confirmation
+  before_create :set_price, :set_confirmation
 
   @status = ['Pending', 'Approved', 'Denied']
 
