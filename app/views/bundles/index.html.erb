@@ -1,17 +1,18 @@
 <% title 'All Bundles' %>
 <%= render 'banner' %>
 <br>
-<div class="container" id="container-js">
+<div class="container" id="scroll-point">
   <div class="search-container">
     <div class="search-input">
       <%= form_tag bundles_path, method: :get do %>
-        <%= text_field_tag :name, params[:name], class: "form-control" %>
-        <%= text_field_tag :age_group, params[:age_group], class: "form-control" %>
+      <%= text_field_tag :name, params[:name], placeholder: "Keyword", class: "form-control" %>
     </div>
-
+    <div class="search-input">
+      <%= text_field_tag :age_group, params[:age_group], placeholder: "All age groups", class: "form-control" %>
+    </div>
     <div class="search-button">
-        <%= submit_tag 'Find Bundles', class: "btn btn-primary" %>
-      <% end %>
+      <%= submit_tag 'Find Bundles', class: "btn btn-primary" %>
+    <% end %>
     </div>
     <div class="search-button">
       <%= link_to 'Clear Search', bundles_path, class: "btn btn-info" %>
@@ -23,7 +24,7 @@
 
 
 <% if @query %>
-  <script>
-    document.getElementById("container-js").scrollIntoView();
-  </script>
+<script>
+  document.getElementById("scroll-point").scrollIntoView();
+</script>
 <% end %>
