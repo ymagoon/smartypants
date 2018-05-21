@@ -2,9 +2,11 @@ class BundlesController < ApplicationController
   before_action :set_bundle, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+
   def index
-    if params[:query]
-      @bundles = Bundle.search_by_name_and_description(params[:query])
+    @query = params[:name] || params[:age_group] ? true : false
+    if @query
+      @bundles = Bundle.where("name ilike ? AND age_group like ?", "%#{params[:name]}%", "%#{params[:age_group]}%")
     else
       @bundles = Bundle.all
     end
