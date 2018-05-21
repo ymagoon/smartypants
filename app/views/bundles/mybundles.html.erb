@@ -1,0 +1,9 @@
+<div class="container">
+  <h1 class="text-center"> <%= current_user.first_name.titleize %>'s Bundles </h1>
+  <br>
+  <%= render 'list_bundles' %>
+  <br>
+  <div class="container">
+    <p><%= link_to "Add a Bundle", new_bundle_path %></p>
+  </div>
+</div>
