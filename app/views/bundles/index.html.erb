@@ -1,32 +1,3 @@
-
 <% title 'All Bundles' %>
 <%= render 'banner' %>
-
-<div class="container">
-    <div class="row">
-      <% @bundles.each do |bundle| %>
-      <%= link_to bundle_path(bundle) do %>
-      <div class="bundles-card col-xs-6 col-md-3">
-        <div class="bundle-image">
-          <%= cl_image_tag bundle.photo, height: 200, width: 300, class: "bundle-photo" %>
-        </div>
-        <div class="bundle-description">
-          <div class="icons">
-            <p class="text-bold">
-            <%= bundle.age_group %> &nbsp&nbsp
-            <% if bundle.gender == "Male" %>
-              <p>  <i class="fas fa-mars"></i></p>
-            <% else %>
-              <p>  <i class="fas fa-venus"></i></p>
-            <% end %>
-            </p>
-          </div>
-          <h5 class="text-bold"><%= bundle.name %></h5>
-          <p><i class="fas fa-dollar-sign"></i><%= bundle.price_per_day %></p>
-        </div>
-      </div>
-      <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= render 'list_bundles' %>

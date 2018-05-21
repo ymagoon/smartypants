@@ -6,6 +6,10 @@ class BundlesController < ApplicationController
     @bundles = Bundle.all
   end
 
+  def mybundles
+    @bundles = Bundle.where(user: current_user)
+  end
+
   def show
     @booking = Booking.new
   end
