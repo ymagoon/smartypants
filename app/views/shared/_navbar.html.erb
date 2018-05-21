@@ -6,7 +6,7 @@
 
   <!-- Right Navigation -->
   <div class="navbar-right hidden-xs hidden-sm">
-    <% if user_signed_in? %>
+    <% if policy(Booking).index? %>
       <p><%= link_to "Orders", bookings_path, class: "navbarlink" %></p>
     <% end %>
     <p><%= link_to "All Bundles", bundles_path, class: "navbarlink" %></p>

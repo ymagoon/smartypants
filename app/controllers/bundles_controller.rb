@@ -1,6 +1,7 @@
 class BundlesController < ApplicationController
   before_action :set_bundle, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_after_action :verify_authorized
 
   def index
     @bundles = policy_scope(Bundle)
