@@ -1,6 +1,8 @@
 <div class="container">
     <div class="row">
       <% @bundles.each do |bundle| %>
+      <% if policy(bundle).show? %>
+        <%= link_to bundle_path(bundle) do %>
         <div class="col-xs-6 col-md-3">
           <%= link_to bundle_path(bundle) do %>
             <div class="bundles-card">
@@ -24,6 +26,7 @@
             </div>
           <% end %>
         </div>
+      <% end %>
       <% end %>
     </div>
   </div>
