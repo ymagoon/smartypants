@@ -29,7 +29,12 @@
       <div class="bundle_items">
         <% @bundle.items.each do |item| %>
         <ul>
-          <li><%= item.color %> <%= item.name %> (<%= item.category %> - <%= item.condition %>)</li>
+          <li><%= item.color %> <%= item.name %> (<%= item.category %> - <%= item.condition %>) &nbsp &nbsp
+            <% if policy(item).destroy? %>
+              <%= link_to bundle_item_path(@bundle, item), method: :delete do %>
+                <i class="fas fa-trash-alt"></i></li>
+                <% end %>
+            <% end %>
         </ul>
         <% end %>
       </div>

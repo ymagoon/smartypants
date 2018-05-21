@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     authorize @item
-    redirect_to bundle_path(@bundle)
+    redirect_to  new_bundle_item_path(@bundle)
   end
 
   private
