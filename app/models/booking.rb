@@ -11,7 +11,7 @@ class Booking < ApplicationRecord
   validates :status, presence: true, inclusion: { in: @status }
   validates :shipping_address, presence: true
 
-  validate :date_picker_validation
+  validate :date_picker_validation, on: :create
   # validate :check_availability
 
   def price_formatted
@@ -32,6 +32,26 @@ class Booking < ApplicationRecord
 
   def service_fee_formatted
     format(find_service_fee)
+  end
+
+  def pending_booking?
+    self.status == 'Pending'
+  end
+
+  def current_booking?
+    self.approved_booking? && self.start_date <= DateTime.now && self.end_date >= DateTime.now
+  end
+
+  def future_booking?
+    self.approved_booking? && self.start_date >= DateTime.now
+  end
+
+  def past_booking?
+    self.approved_booking? && self.end_date <= DateTime.now
+  end
+
+  def approved_booking?
+    self.status == 'Approved'
   end
 
   private

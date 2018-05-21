@@ -1,12 +1,13 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :approve, :deny]
-  before_action :set_bundle, only: [:new, :create] #, :approve, :deny
+  before_action :set_bundle, only: [:new, :create]
 
   def index
-    @bookings = Booking.all.select { |booking| booking.bundle.user == current_user } #where(user: current_user)
-    @pending_bookings = @bookings.select { |booking| booking.status == 'Pending' }
-    @active_bookings = @bookings.select { |booking| booking.status == 'Approved' && booking.start_date > DateTime.now }
-    @past_bookings = @bookings.select { |booking| booking.status == 'Approved' && booking.end_date < DateTime.now }
+    @bookings = Booking.all.select { |booking| booking.bundle.user == current_user }
+    @pending_bookings = @bookings.select { |booking| booking.pending_booking? }
+    @active_bookings = @bookings.select { |booking| booking.current_booking? || booking.future_booking? }.sort_by { |booking| booking.start_date }
+    ap @active_bookings
+    @past_bookings = @bookings.select { |booking| booking.past_booking? }
   end
 
   def show
