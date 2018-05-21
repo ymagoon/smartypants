@@ -24,7 +24,6 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      raise
       render 'bundles/show'
     end
   end
