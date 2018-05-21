@@ -5,7 +5,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
    process convert: 'jpg'
 
-    version :bundlecard do
+    version :bundle_card do
       process resize_to_fill: [300,200]
     end
 
