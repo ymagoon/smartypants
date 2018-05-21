@@ -18,20 +18,24 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     @booking.status = 'Pending'
+    authorize @booking
 
     if @booking.save
       redirect_to booking_path(@booking)
     else
+      raise
       render 'bundles/show'
     end
   end
 
   def approve
+    authorize @booking
     @booking.update(status: 'Approved')
     redirect_to bookings_path
   end
 
   def deny
+    authorize @booking
     @booking.update(status: 'Denied')
     redirect_to bookings_path
   end
@@ -49,6 +53,7 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 end
 
