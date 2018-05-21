@@ -6,7 +6,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.bundle = @bundle
     @review.user = current_user
-    authorize @review
     if @review.save
       redirect_to bundle_path(@bundle)
     else
