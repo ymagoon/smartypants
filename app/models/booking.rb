@@ -2,14 +2,14 @@ class Booking < ApplicationRecord
   belongs_to :bundle
   belongs_to :user
 
-  before_create :set_price, :set_confirmation
+  after_create :set_price, :set_confirmation
 
   @status = ['Pending', 'Approved', 'Denied']
 
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :status, presence: true, inclusion: { in: @status }
-  validates :shipping_address, presence: true
+  # validates :shipping_address, presence: true
 
   validate :date_picker_validation, on: :create
   # validate :check_availability

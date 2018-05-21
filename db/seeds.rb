@@ -26,7 +26,7 @@ g = Bundle.new(name: "Play park kiddos", description: "Clothes that will keep yo
 g.remote_photo_url = "http://res.cloudinary.com/cassysan/image/upload/v1526548924/myles-tan-84040-unsplash.jpg"
 g.save!
 
-h = Bundle.new(name: "The cutest dress up outfits for your babe" , description: "The cutest dress up outfits for your babe" , gender: "Male" , age_group: "6 to 9 months" , price_per_day: 3 , user_id: 1)
+h = Bundle.new(name: "The cutest dress up outfits" , description: "The cutest dress up outfits for your babe" , gender: "Male" , age_group: "6 to 9 months" , price_per_day: 3 , user_id: 1)
 h.remote_photo_url = "http://res.cloudinary.com/cassysan/image/upload/v1526461935/smarty-pants/baby-clothes-baby-shoes-booties-47220_1.jpg"
 h.save!
 

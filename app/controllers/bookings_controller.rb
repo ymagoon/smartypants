@@ -1,5 +1,9 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :approve, :deny]
+<<<<<<< HEAD
+=======
+  before_action :set_bundle, only: [:create]
+>>>>>>> ee5483b8177631f82342b1cc44a4642bb19fb6b5
   after_action :verify_authorized, except: [:index, :show], unless: :skip_pundit?
 
   def index
@@ -49,11 +53,16 @@ class BookingsController < ApplicationController
 
   def set_bundle
     @bundle = Bundle.find(params[:bundle_id])
+    authorize @bundle
   end
 
   def set_booking
     @booking = Booking.find(params[:id])
+<<<<<<< HEAD
     authorize @booking
+=======
+
+>>>>>>> ee5483b8177631f82342b1cc44a4642bb19fb6b5
   end
 
   def skip_pundit?
