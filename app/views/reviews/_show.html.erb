@@ -1,6 +1,6 @@
 <hr>
 <div class="reviews" >
-  <div class="review_form form">
+  <div class="review_form">
     <% if @can_i_review %>
       <%= render 'reviews/form', bundle: @bundle, review: Review.new %>
     <% end %>
