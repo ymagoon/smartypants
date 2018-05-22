@@ -22,10 +22,13 @@ class Bundle < ApplicationRecord
   end
 
   def average_rating
-    # sum = 0
-    # self.reviews.each { |review| sum += review.stars }
-    # return (sum * 2).round / 2.0
-    3
+    sum = 0
+    if number_of_reviews > 0
+      self.reviews.each { |review| sum += review.stars }
+      sum.round / number_of_reviews
+    else
+      0
+    end
   end
 
   def blank_stars
