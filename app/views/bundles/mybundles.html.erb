@@ -1,11 +1,14 @@
 <div class="container">
   <h1 class="text-center"> <%= current_user.first_name.titleize %>'s Bundles </h1>
-  <br>
+  <hr>
   <%= render 'shared/list_bundle_cards' %>
   <br>
   <div class="container">
+    <hr>
+    <div class="text-center">
     <% if policy(Bundle).create? %>
-      <p><%= link_to "Add a Bundle", new_bundle_path %></p>
+      <p><%= link_to "Add a Bundle", new_bundle_path, class: "btn-primary btn-sm btn brand-primary" %></p>
     <% end %>
+    </div>
   </div>
 </div>
