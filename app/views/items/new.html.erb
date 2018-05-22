@@ -1,46 +1,58 @@
-<% title 'New Item' %>
+<% title @bundle.name %>
 
-<h1 class="text-center"> Add items for <%= @bundle.name %> </h1>
 <div class="container">
-  <div class="row banner"></div>
-  <div class="row bundle">
-    <div class="large-image">
-      <%= cl_image_tag @bundle.photo.url(:showpage) %>
-      <% if @bundle.user == current_user %>
-        <div class="controls">
-          <p><%= link_to "Delete Bundle", bundle_path(@bundle), method: :delete, class: 'btn btn-primary brand-primary'  %></p>
-          <% end %>
-          <p><%= link_to "Back to All", bundles_path, class: "btn btn-primary brand-primary" %>
-        </div>
+  <div class="bundle-show-content">
+    <div class="bundle-show-image">
+      <%= cl_image_tag @bundle.photo.url(:showpage), class: "bundle-photo" %>
+      <div class="controls">
+        <% if @bundle.user == current_user %>
+          <p><%= link_to "Edit Bundle", new_bundle_item_path(@bundle), class: 'btn btn-small btn-primary brand-primary' %></p>
+          <p><%= link_to "Delete Bundle", bundle_path(@bundle), method: :delete, class: 'btn btn-small btn-primary brand-primary'  %></p>
+        <% end %>
+      </div>
     </div>
-    <div class="large-description">
-      <h1><%= @bundle.name %></h1>
-      <div class="icons">
-        <p><i class="fas fa-child">&nbsp</i><%= @bundle.age_group %></p>
+    <div class="bundle-show-info">
+      <h1><%= @bundle.name.titleize %></h1>
+      <p>
+      <% @bundle.average_rating.to_i.times do  %>
+        <span class="glyphicon glyphicon-star rating"></span>
+      <% end %>
+      <% @bundle.blank_stars.times do %>
+        <span class="glyphicon glyphicon-star-empty rating"></span>
+      <% end %>
+      (<%= @bundle.number_of_reviews %>)
+      </p>
+      <div class="bundle-categories">
         <% if @bundle.gender == "Male" %>
-          <p><i class="fas fa-mars">&nbsp</i><%= @bundle.gender %></p>
+          <p class="bundle-gender-icon"><i class="fas fa-mars"></i></p>
         <% else %>
-          <p><i class="fas fa-venus">&nbsp</i><%= @bundle.gender %></p>
+          <p class="bundle-gender-icon"><i class="fas fa-venus"></i></p>
         <% end %>
-        <p><i class="fas fa-tshirt">&nbsp</i><%= @bundle.items.length %></p>
-        <p><i class="fas fa-dollar-sign">&nbsp</i><%= @bundle.price_per_day %> per night</p>
+        <p class="bundle-gender"><%= @bundle.gender %></p>
+        <p class="bundle-number-items-icon"><i class="fas fa-tshirt"></i></p>
+        <p class="bundle-number-items"><%= @bundle.items.length %></p>
       </div>
-      <div class="bundle_items">
+
+      <p><%= @bundle.description %></p>
+      <p><i class="fas fa-dollar-sign"></i>&nbsp<strong><%= @bundle.price_per_day_formatted %> / day</strong></p>
+      <hr>
+      <h3>Included Items</h3>
+      <div class="bundle-item-list">
         <% @bundle.items.each do |item| %>
-        <ul>
-          <li><%= item.color %> <%= item.name %> (<%= item.category %> - <%= item.condition %>) &nbsp &nbsp
-            <% if policy(item).destroy? %>
-              <%= link_to bundle_item_path(@bundle, item), method: :delete do %>
-                <i class="fas fa-trash-alt"></i></li>
-                <% end %>
-            <% end %>
-        </ul>
+          <p class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="<%= "#{item.color}\n#{item.condition}\n#{item.category}" %>">
+            <%= item.name %>
+          </p>
         <% end %>
       </div>
-      <h3> Add an Item</h3>
-      <div class="booking-form">
+    </div>
+  </div>
+  <hr>
+      <div class="form">
+        <h3> Add an Item</h3>
         <%= render 'form' %>
+        <br>
       </div>
     </div>
   </div>
 </div>
+<br>
