@@ -46,6 +46,10 @@
   }
 }
 
+.bundle-show-image {
+  margin-right: 50px;
+}
+
 .bundle-info {
   display: flex;
   font-size: 15px;
@@ -68,6 +72,17 @@
   }
 }
 
+.bundle-categories {
+  display: flex;
+
+  .bundle-gender-icon, .bundle-number-items-icon {
+    margin-right: 4px;
+  }
+  .bundle-gender, .bundle-number-items {
+    margin-right: 15px;
+  }
+}
+
 .fas {
   color: $pink;
 }
@@ -76,6 +91,16 @@
   display: flex;
   margin-top: 20px;
   justify-content: space-around;
+}
+
+.rating {
+  color: $pink;
+}
+
+.bundle-item-list {
+  p {
+    margin-bottom: 5px;
+  }
 }
 
 @media only screen and (max-width: 450px) {

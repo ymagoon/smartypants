@@ -1,0 +1,32 @@
+<div class="container" id="bundles-list">
+    <div class="row">
+      <% @bundles.each do |bundle| %>
+      <% if policy(bundle).show? %>
+        <div class="col-xs-6 col-md-3">
+          <%= link_to bundle_path(bundle) do %>
+            <div class="bundles-card">
+              <div class="bundle-image" style="background-image:url(<%= cl_image_path bundle.photo.url(:bundle_card) unless bundle.photo.blank? %>)">
+              </div>
+              <div class="bundle-content">
+                <div class="bundle-name">
+                  <h5 class="text-bold bundle-title"><%= bundle.name %></h5>
+                  <% if bundle.gender == "Male" %>
+                    <p><i class="fas fa-mars"></i></p>
+                  <% else %>
+                    <p><i class="fas fa-venus"></i></p>
+                  <% end %>
+                </div>
+              </div>
+              <div class="bundle-info">
+                <p class="bundle-age"> <%= bundle.age_group %> </p>
+                <p class="bundle-items"><i class="fas fa-tshirt"></i> <%= bundle.number_of_items %></p>
+                <p class="bundle-price"><i class="fas fa-dollar-sign"> </i><%= bundle.price_per_day_formatted %> </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
