@@ -9,24 +9,43 @@
           <p><%= link_to "Edit Bundle", new_bundle_item_path(@bundle), class: 'spbtn btn-primary brand-primary' %></p>
           <p><%= link_to "Delete Bundle", bundle_path(@bundle), method: :delete, class: 'spbtn btn-primary brand-primary'  %></p>
         <% end %>
-        <p><%= link_to "Back to All", bundles_path, class: "btn btn-primary brand-primary" %>
+        <!-- <p><%#= link_to "Back to All", bundles_path, class: "btn btn-primary brand-primary" %> -->
       </div>
     </div>
     <div class="bundle-show-info">
       <h1><%= @bundle.name %></h1>
-      <p>Review stars will go here (23)</p>
+      <p>
+      <% @bundle.average_rating.to_i.times do  %>
+        <span class="glyphicon glyphicon-star rating"></span>
+      <% end %>
+      <% @bundle.blank_stars.times do %>
+        <span class="glyphicon glyphicon-star-empty rating"></span>
+      <% end %>
+      (<%= @bundle.number_of_reviews %>)
+      </p>
+      <div class="bundle-categories">
+        <% if @bundle.gender == "Male" %>
+          <p class="bundle-gender-icon"><i class="fas fa-mars"></i></p>
+        <% else %>
+          <p class="bundle-gender-icon"><i class="fas fa-venus"></i></p>
+        <% end %>
+        <p class="bundle-gender"><%= @bundle.gender %></p>
+        <p class="bundle-number-items-icon"><i class="fas fa-tshirt"></i></p>
+        <p class="bundle-number-items"><%= @bundle.items.length %></p>
+      </div>
+
+      <p><%= @bundle.description %></p>
       <p><i class="fas fa-dollar-sign"></i>&nbsp<strong><%= @bundle.price_per_day_formatted %> / day</strong></p>
       <hr>
-      <div>
+      <div class="bundle-item-list">
+        <div class="row">
         <% @bundle.items.each do |item| %>
-        <ul>
-          <li>
-            <p><%= item.name %> </p>
-            <p><strong>Color: </strong><%= item.color %> </p>
-            <p><strong>Condition: </strong> <%= item.condition %></p>
-          </li>
-        </ul>
+          <div class="col-xs-6">
+            <%= render 'itemlist', name: item.name, color: item.color, condition: item.condition, category: item.category %>
+          </div>
         <% end %>
+      </div>
+
       </div>
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
           Book this Bundle
@@ -38,12 +57,6 @@
 
   <!--
       <div class="icons">
-        <p><i class="fas fa-child">&nbsp</i><%#= @bundle.age_group %></p>
-        <%# if @bundle.gender == "Male" %>
-          <p><i class="fas fa-mars">&nbsp</i></p>
-        <%# else %>
-          <p><i class="fas fa-venus">&nbsp</i><%#= @bundle.gender %></p>
-        <%# end %>
         <p><i class="fas fa-tshirt">&nbsp</i><%#= @bundle.items.length %></p>
         <p><i class="fas fa-dollar-sign">&nbsp</i><%#= @bundle.price_per_day %> per night</p>
       </div>

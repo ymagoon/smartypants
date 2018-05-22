@@ -46,6 +46,10 @@
   }
 }
 
+.bundle-show-image {
+  margin-right: 50px;
+}
+
 .bundle-info {
   display: flex;
   font-size: 15px;
@@ -68,6 +72,17 @@
   }
 }
 
+.bundle-categories {
+  display: flex;
+
+  .bundle-gender-icon, .bundle-number-items-icon {
+    margin-right: 4px;
+  }
+  .bundle-gender, .bundle-number-items {
+    margin-right: 15px;
+  }
+}
+
 .fas {
   color: $pink;
 }
@@ -77,6 +92,61 @@
   margin-top: 20px;
   justify-content: space-around;
 }
+
+.rating {
+  color: $pink;
+}
+
+.bundle-item-list {
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+  .item-card {
+    background-color: $light-gray;
+    box-shadow: 1px 1px 3px $medium-gray;
+    width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 15px;
+    font-size: 15px;
+
+    .item-icon {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+    .item-name {
+      position: absolute;
+      top: 5px;
+      left: 25px;
+    }
+    .item-category {
+      position: absolute;
+      top: 24px;
+      left: 25px;
+    }
+    .item-condition {
+      position: absolute;
+      top: 42px;
+      left: 25px;
+    }
+    .item-color {
+      position: absolute;
+      top: 62px;
+      left: 25px;
+    }
+  }
+}
+
+
+// <div class="item-card">
+//   <p class="item-name"> <%= name %> </p>
+//   <p class="item-category"> <%= category %></p>
+//   <p class="item-condition"> <%= condition %></p>
+//   <p class="item-color"> <%= color %></p>
+// </div>
+
 
 @media only screen and (max-width: 450px) {
   .bundles-card {
