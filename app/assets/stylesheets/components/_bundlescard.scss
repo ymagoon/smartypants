@@ -98,44 +98,8 @@
 }
 
 .bundle-item-list {
-  display: flex;
-  width: 100%;
-  margin-bottom: 30px;
-  .item-card {
-    background-color: $light-gray;
-    box-shadow: 1px 1px 3px $medium-gray;
-    width: 200px;
-    height: 100px;
-    border-radius: 5px;
-    position: relative;
-    margin-top: 15px;
-    font-size: 15px;
-
-    .item-icon {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-    }
-    .item-name {
-      position: absolute;
-      top: 5px;
-      left: 25px;
-    }
-    .item-category {
-      position: absolute;
-      top: 24px;
-      left: 25px;
-    }
-    .item-condition {
-      position: absolute;
-      top: 42px;
-      left: 25px;
-    }
-    .item-color {
-      position: absolute;
-      top: 62px;
-      left: 25px;
-    }
+  p {
+    margin-bottom: 5px;
   }
 }
 
