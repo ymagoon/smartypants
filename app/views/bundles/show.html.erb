@@ -6,8 +6,8 @@
       <%= cl_image_tag @bundle.photo.url(:showpage), class: "bundle-photo" %>
       <div class="controls">
         <% if @bundle.user == current_user %>
-          <p><%= link_to "Edit Bundle", new_bundle_item_path(@bundle), class: 'btn btn-primary brand-primary' %></p>
-          <p><%= link_to "Delete Bundle", bundle_path(@bundle), method: :delete, class: 'btn btn-primary brand-primary'  %></p>
+          <p><%= link_to "Edit Bundle", new_bundle_item_path(@bundle), class: 'spbtn btn-primary brand-primary' %></p>
+          <p><%= link_to "Delete Bundle", bundle_path(@bundle), method: :delete, class: 'spbtn btn-primary brand-primary'  %></p>
         <% end %>
         <p><%= link_to "Back to All", bundles_path, class: "btn btn-primary brand-primary" %>
       </div>
@@ -28,10 +28,14 @@
         </ul>
         <% end %>
       </div>
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+          Book this Bundle
+        </button>
     </div>
+        <!-- Button trigger modal -->
   </div>
 
-  <%= render 'reviews/show' %>
+
   <!--
       <div class="icons">
         <p><i class="fas fa-child">&nbsp</i><%#= @bundle.age_group %></p>
@@ -55,10 +59,7 @@
 </div>
 
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -76,3 +77,5 @@
     </div>
   </div>
 </div>
+
+<%= render 'reviews/show' %>
