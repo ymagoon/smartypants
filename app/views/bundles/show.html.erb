@@ -17,7 +17,7 @@
       <% @bundle.average_rating.to_i.times do  %>
         <span class="glyphicon glyphicon-star rating"></span>
       <% end %>
-      <% @bundle.blank_stars.times do %>
+      <% @bundle.blank_stars.to_i.times do %>
         <span class="glyphicon glyphicon-star-empty rating"></span>
       <% end %>
       (<%= @bundle.number_of_reviews %>)
