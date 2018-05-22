@@ -1,7 +1,9 @@
 <hr>
 
 <div class="reviews">
-  <%= render 'reviews/form' %>
+  <% if policy(Review).create? %>
+    <%= render 'reviews/form' %>
+  <% end %>
   <div class="past_reviews">
     <% unless @bundle.reviews.nil? %>
       <% @bundle.reviews.each do |review| %>
@@ -11,7 +13,18 @@
         <% review.stars.times do %>
         <i class="fas fa-star"></i>
         <% end %>
+        <hr>
         <p> -  <%= review.user.first_name.capitalize %></p>
+        <% if policy(Review).update? %>
+          <%= link_to edit_bundle_review_path(review) do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        <% end %>
+        <% if policy(Review).destroy? %>
+          <%= link_to bundle_review_path(review), method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
         </div>
         <% end %>
     <% end %>

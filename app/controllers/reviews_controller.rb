@@ -1,12 +1,14 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :destroy]
   before_action :set_bundle, only: [:new, :create]
+  before_action :set_booking, only: [:create]
 
   def create
     @review = Review.new(review_params)
     @review.bundle = @bundle
+    @review.booking = @booking
     @review.user = current_user
-    authorize @review
+    authorize @bundle
     if @review.save
       redirect_to bundle_path(@bundle)
     else
@@ -38,4 +40,9 @@ class ReviewsController < ApplicationController
   def set_review
     @review = Review.find(params[:id])
   end
+
+  def set_booking
+    current_user.bookings.where(bundle_id: params[:bundle_id]).first
+  end
+
 end
