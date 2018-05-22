@@ -12,8 +12,6 @@ class ReviewsController < ApplicationController
     @review.bundle = @bundle
     @review.booking = @booking
     @review.user = current_user
-    authorize @bundle
-
     if @review.save
       respond_to do |format|
         format.html { redirect_to bundle_path(@bundle) }

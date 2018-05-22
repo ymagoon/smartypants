@@ -2,12 +2,10 @@
   text-align: center;
 }
 
-.form {
-  background-color: white;
+.review_form {
   border-radius: 5px;
   padding: 10px 30px;
   margin-top: 20px;
-  border: 1px solid $darker-gray;
 
   h2 {
     margin-top: 0;
@@ -17,4 +15,8 @@
 .form-actions {
   display: flex;
   justify-content: space-around;
+}
+
+.form:empty {
+  display: none;
 }
