@@ -1,6 +1,18 @@
-a = Bundle.new(name: "Cute Baby Toys", description: "Lots of fun toys for babies to play with!", gender: "Female", age_group: "2T", price_per_day: 1, user_id: 1)
+a = Bundle.new(name: "Cute Baby Toys", description: "You will love this bundle! It contains loads of fun toys your toddler will be able to play with.", gender: "Female", age_group: "2T", price_per_day: 1, user_id: 1)
 a.remote_photo_url = "https://ae01.alicdn.com/kf/HTB1J2v6NXXXXXXtXXXXq6xXFXXXM/caterpillar-Soft-Toy-Doll-Rattle-Kids-Baby-Playmate-Toys-Calm-Owl-Doll-cute-peek-a-boo.jpg"
 a.save!
+
+i1 = Item.new(name: 'Cute playsuit', category: 'Playsuit', color: 'Green', condition:'Mint')
+i1.bundle = a
+i1.save
+
+i2 = Item.new(name: 'Mickey Mouse Socks', category: 'Socks', color: 'Red', condition:'Used')
+i2.bundle = a
+i2.save
+
+i3 = Item.new(name: 'Princess Onesie', category: 'Onesie', color: 'Pink', condition:'Used')
+i3.bundle = a
+i3.save
 
 b = Bundle.new(name: "Adorable Girls Clothes", description: "A bunch of cute girls clothes, great for summer!", gender: "Female", age_group: "18 to 24 months", price_per_day: 1, photo: "smarty-pants/accessories-adorable-baby-325867.jpg", user_id: 1)
 b.remote_photo_url = "https://ae01.alicdn.com/kf/HTB16sXnKFXXXXXrXFXXq6xXFXXXH/New-arrived-spring-Barbie-girls-clothing-set-adorable-twins-set-Girls-sports-outfit-DS5.jpg"
