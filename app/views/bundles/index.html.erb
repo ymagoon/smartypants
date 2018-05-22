@@ -1,5 +1,6 @@
 <% title 'All Bundles' %>
 <%= render 'banner' %>
+
 <br>
 <div class="container" id="scroll-point">
   <div class="search-container">
@@ -20,10 +21,11 @@
   </div>
 </div>
 <br>
-<%= render 'list_bundles' %>
+<%= render 'shared/list_bundle_cards' %>
 
 <% if @query %>
 <script>
   document.getElementById("scroll-point").scrollIntoView();
 </script>
 <% end %>
+

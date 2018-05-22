@@ -17,6 +17,16 @@ class Bundle < ApplicationRecord
     format(self.price_per_day)
   end
 
+  def number_of_reviews
+    @bundle.reviews.length
+  end
+
+  def average_review
+    sum = 0
+    @bundle.reviews.stars.each { |stars| sum += stars }
+    return (sum * 2).round / 2.0
+  end
+
   def number_of_items
     self.items.size
   end
