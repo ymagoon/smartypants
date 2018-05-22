@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
       redirect_to bundle_path(@bundle)
     else
       render 'bundle_path(@bundle'
+    end
   end
 
   private
