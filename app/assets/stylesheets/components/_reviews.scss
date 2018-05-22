@@ -9,9 +9,14 @@
   margin: 10px;
   margin-left: 20px;
   background-color: #FFFFFF;
+  min-width: 400px;
 }
 
 .review_stars {
   display: flex;
   justify-content: space-between;
+}
+
+.review_form {
+  min-width: 400px;
 }

@@ -13,10 +13,17 @@ class ReviewsController < ApplicationController
     @review.booking = @booking
     @review.user = current_user
     authorize @bundle
+
     if @review.save
-      redirect_to bundle_path(@bundle)
+      respond_to do |format|
+        format.html { redirect_to bundle_path(@bundle) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'bundle_path(@bundle'
+      respond_to do |format|
+        format.html { render 'bundle_path(@bundle' }
+        format.js  # <-- idem
+      end
     end
   end
 
@@ -28,11 +35,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     authorize @review
-    if @review.delete
-      redirect_to bundle_path(@bundle)
-    else
-      render 'bundle_path(@bundle'
-    end
+    @review.destroy
   end
 
   private

@@ -1,29 +1,15 @@
 <hr>
-
-<div class="reviews">
-  <% if @can_i_review %>
-    <%= render 'reviews/form' %>
-  <% end %>
-  <div class="past_reviews">
+<div class="reviews" >
+  <div class="review_form form">
+    <% if @can_i_review %>
+      <%= render 'reviews/form', bundle: @bundle, review: Review.new %>
+    <% end %>
+  </div>
+  <div class="past_reviews" id="jsreview">
     <% unless @bundle.reviews.nil? %>
       <% @bundle.reviews.each do |review| %>
-      <div class="review_card">
-        <%= review.title %>
-        <%= review.content %>
-        <p> -  <%= review.user.first_name.capitalize %></p>
-        <hr>
-        <div class="review_stars">
-          <div class="stars">
-            <% review.stars.times do %>
-            <i class="fas fa-star"></i>
-            <% end %>
-          </div>
-           <%= link_to bundle_review_path(@bundle, review), method: :delete do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-        </div>
-        </div>
-        <% end %>
+      <%= render 'reviews/review', review: review %>
+      <% end %>
     <% end %>
   </div>
 </div>
