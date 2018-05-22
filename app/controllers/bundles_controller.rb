@@ -7,7 +7,12 @@ class BundlesController < ApplicationController
   def index
     @query = params[:name] || params[:age_group] ? true : false
     if @query
-      @bundles = Bundle.where("name ilike ? AND age_group like ?", "%#{params[:name]}%", "%#{params[:age_group]}%")
+      @bundles = policy_scope(Bundle).where("name ilike ? AND age_group like ?", "%#{params[:name]}%", "%#{params[:age_group]}%")
+      # if @bundles.empty?
+      #   @bundles = "We don't have any bundles matching your searchm, try again!"
+      # else
+      #   @bundles
+      # end
     else
       @bundles = policy_scope(Bundle)
     end
