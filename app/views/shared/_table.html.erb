@@ -43,13 +43,13 @@
 
     <div class="table-approve">
       <% if booking.pending_booking? %>
-        <%= link_to 'Approve', approve_booking_path(booking), method: :patch, class: 'booking-approve btn-approve' %>
+        <%= link_to 'Approve', approve_booking_path(booking), method: :patch, class: 'booking-approve btn-approve', remote: true %>
       <% end %>
     </div>
 
     <div class="table-deny">
       <% if booking.pending_booking? %>
-        <%= link_to 'Deny', deny_booking_path(booking), method: :patch, class: 'booking-deny btn-deny' %>
+        <%= link_to 'Deny', deny_booking_path(booking), method: :patch, class: 'booking-deny btn-deny', remote: true %>
       <% end %>
     </div>
 
