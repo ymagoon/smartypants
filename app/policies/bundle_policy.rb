@@ -5,10 +5,6 @@ class BundlePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    true
-  end
-
   def mybundles?
     true
   end
