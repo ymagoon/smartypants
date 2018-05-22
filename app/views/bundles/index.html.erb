@@ -6,10 +6,10 @@
   <div class="search-container">
     <div class="search-input">
       <%= form_tag bundles_path, method: :get do %>
-      <%= text_field_tag :name, params[:name], placeholder: "Keyword", class: "form-control" %>
+      <%= text_field_tag :name, params[:name], placeholder: "Find a bundle", class: "form-control" %>
     </div>
     <div class="search-input">
-      <%= text_field_tag :age_group, params[:age_group], placeholder: "All age groups", class: "form-control" %>
+      <%= select_tag :age_group, options_for_select(Bundle.age_groups), prompt: "Select age group", class: "form-control" %>
     </div>
     <div class="search-button">
       <%= submit_tag 'Find Bundles', class: "btn btn-primary" %>
@@ -28,4 +28,5 @@
   document.getElementById("scroll-point").scrollIntoView();
 </script>
 <% end %>
+
 
