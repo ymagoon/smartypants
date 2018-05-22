@@ -1,0 +1,16 @@
+<% if @bundle.averagereview == 0.5 %>
+  <i class="fas fa-star-half"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+<% elsif @bundle.averagereview == 1.0 %>
+  <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+<% elsif @bundle.averagereview == 2.0 %>
+  <i class="fas fa-star"></i><i class="fas fa-star-half"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+<% elsif @bundle.averagereview == 2.5 %>
+  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+<% elsif @bundle.averagereview == 3.0 %>
+  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+<% elsif @bundle.averagereview == 3.5 %>
+
+<% elsif @bundle.averagereview == 4.0 %>
+<% elsif @bundle.averagereview == 4.5 %>
+<% elsif @bundle.averagereview == 5.0 %>
+<% end %>

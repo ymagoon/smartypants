@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text-center"> <%= current_user.first_name.titleize %>'s Bundles </h1>
   <br>
-  <%= render 'list_bundles' %>
+  <%= render 'shared/list_bundle_cards' %>
   <br>
   <div class="container">
     <% if policy(Bundle).create? %>

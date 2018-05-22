@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_074112) do
+ActiveRecord::Schema.define(version: 2018_05_22_034703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2018_05_21_074112) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "bundle_id"
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
     t.index ["bundle_id"], name: "index_reviews_on_bundle_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_074112) do
   add_foreign_key "bookings", "users"
   add_foreign_key "bundles", "users"
   add_foreign_key "items", "bundles"
+  add_foreign_key "reviews", "bookings"
   add_foreign_key "reviews", "bundles"
   add_foreign_key "reviews", "users"
 end

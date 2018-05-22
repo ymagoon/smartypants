@@ -13,6 +13,10 @@ class BundlePolicy < ApplicationPolicy
     true
   end
 
+  def show_review?
+    record.bookings.user == user
+  end
+
   def create?
     user
   end

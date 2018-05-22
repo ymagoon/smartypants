@@ -2,7 +2,7 @@ class Bundle < ApplicationRecord
   belongs_to :user
   has_many :bookings
   has_many :items
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   mount_uploader :photo, PhotoUploader
 
   def self.gender
@@ -15,6 +15,21 @@ class Bundle < ApplicationRecord
 
   def price_per_day_formatted
     format(self.price_per_day)
+  end
+
+  def number_of_reviews
+    self.reviews.length
+  end
+
+  def average_rating
+    # sum = 0
+    # self.reviews.each { |review| sum += review.stars }
+    # return (sum * 2).round / 2.0
+    3
+  end
+
+  def blank_stars
+    5 - average_rating
   end
 
   def number_of_items

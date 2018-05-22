@@ -13,10 +13,8 @@
       <p><%= booking.bundle.name %></p>
     </div>
     <div class="table-img">
-
-      <%#= image_tag "https://ui-avatars.com/api/?name=#{booking.user.first_name}+#{booking.user.last_name}", class: 'avatar' %>
       <% if booking.user.photo.file.nil? %>
-        <%= image_tag 'default-avatar-min.jpeg', class: 'avatar' %>
+        <%= image_tag 'default-avatar-min.jpg', class: 'avatar' %>
       <% else %>
         <%= cl_image_tag booking.user.photo, height: 35, width: 35, class: 'avatar' %>
       <% end %>

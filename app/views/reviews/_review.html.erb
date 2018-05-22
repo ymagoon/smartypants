@@ -1,0 +1,15 @@
+  <div class="review_card" data-review-id="<%= review.id %>">
+    <h5 class="bold"><%= review.title %></h5>
+    <%= review.content %>
+    <p> -  <%= review.user.first_name.capitalize %></p>
+    <hr>
+    <div class="review_stars">
+      <div class="stars">
+        <% review.stars.times do %>
+        <i class="fas fa-star"></i>
+        <% end %>
+      </div>
+       <%= link_to bundle_review_path(@bundle, review), method: :delete, remote: true do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %></div>
+    </div>
