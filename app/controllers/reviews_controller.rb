@@ -1,7 +1,11 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :destroy]
-  before_action :set_bundle, only: [:new, :create]
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_bundle, only: [:new, :create, :destroy]
   before_action :set_booking, only: [:create]
+
+  def new
+    @review = Review.new
+  end
 
   def create
     @review = Review.new(review_params)
@@ -16,10 +20,14 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
   end
 
   def destroy
+    authorize @review
     if @review.delete
       redirect_to bundle_path(@bundle)
     else
@@ -42,7 +50,7 @@ class ReviewsController < ApplicationController
   end
 
   def set_booking
-    current_user.bookings.where(bundle_id: params[:bundle_id]).first
+    @booking = current_user.bookings.where(bundle_id: params[:bundle_id]).first
   end
 
 end

@@ -5,14 +5,6 @@ class ReviewPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
-  end
-
-  def new?
-    create?
-  end
-
   def create?
     record.booking.user == user
   end

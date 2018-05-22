@@ -1,7 +1,7 @@
 <hr>
 
 <div class="reviews">
-  <% if policy(Review).create? %>
+  <% if @can_i_review %>
     <%= render 'reviews/form' %>
   <% end %>
   <div class="past_reviews">
@@ -10,21 +10,18 @@
       <div class="review_card">
         <%= review.title %>
         <%= review.content %>
-        <% review.stars.times do %>
-        <i class="fas fa-star"></i>
-        <% end %>
-        <hr>
         <p> -  <%= review.user.first_name.capitalize %></p>
-        <% if policy(Review).update? %>
-          <%= link_to edit_bundle_review_path(review) do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
-        <% end %>
-        <% if policy(Review).destroy? %>
-          <%= link_to bundle_review_path(review), method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
-        <% end %>
+        <hr>
+        <div class="review_stars">
+          <div class="stars">
+            <% review.stars.times do %>
+            <i class="fas fa-star"></i>
+            <% end %>
+          </div>
+           <%= link_to bundle_review_path(@bundle, review), method: :delete do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+        </div>
         </div>
         <% end %>
     <% end %>
