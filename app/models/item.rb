@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   end
 
   def self.colors
-    %w(Red Orange Yellow Green Blue Indigo Violet).sort
+    %w(Red Orange Yellow Green Blue Indigo Violet Pink).sort
   end
 
   def self.conditions
