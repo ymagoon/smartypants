@@ -26,6 +26,7 @@ class BundlesController < ApplicationController
   def show
     @booking = Booking.new
     @review = Review.new
+    @can_i_review = Booking.where(user: current_user, bundle_id: params[:id], status: "Approved").any?
   end
 
   def new

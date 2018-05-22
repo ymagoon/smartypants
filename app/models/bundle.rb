@@ -2,7 +2,7 @@ class Bundle < ApplicationRecord
   belongs_to :user
   has_many :bookings
   has_many :items
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   mount_uploader :photo, PhotoUploader
 
   def self.gender
